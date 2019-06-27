@@ -16,3 +16,6 @@ let navBarHeight = statusBarHeight + 44
 let separatorHeight = 1 / UIScreen.main.scale
 let heheda = 11
 let mainColor = "2c9eff"
+let gray1 = "f5f6f8"
+let shadowColor = "26133660"
+let orange = "ff7a00"

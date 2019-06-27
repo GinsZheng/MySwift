@@ -78,7 +78,7 @@ extension UILabel {
     
     
     // 常用其他布局
-    func makeConstraintsToLeftTop(left: ConstraintRelatableTarget, top: ConstraintOffsetTarget, topRelativeView: ConstraintRelatableTarget) {
+    func makeConstraintsToLeftTopRelative(left: ConstraintRelatableTarget, top: ConstraintOffsetTarget, topRelativeView: ConstraintRelatableTarget) {
         self.snp.makeConstraints { (make) in
             make.left.equalTo(left)
             make.top.equalTo(topRelativeView).offset(top)
@@ -86,7 +86,7 @@ extension UILabel {
         }
     }
     
-    func makeConstraintsToRightTop(right: ConstraintRelatableTarget, top: ConstraintOffsetTarget, topRelativeView: ConstraintRelatableTarget) {
+    func makeConstraintsToRightTopRelative(right: ConstraintRelatableTarget, top: ConstraintOffsetTarget, topRelativeView: ConstraintRelatableTarget) {
         self.snp.makeConstraints { (make) in
             make.right.equalTo(right)
             make.top.equalTo(topRelativeView).offset(top)
@@ -95,6 +95,8 @@ extension UILabel {
     }
 
 }
+
+
 
 extension UIView {
     func makeConstraintsToLeftTop(left: ConstraintRelatableTarget, top: ConstraintRelatableTarget, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
@@ -188,6 +190,15 @@ extension UIView {
         }
     }
     
+    func makeConstraintsToEdges(allEdges: ConstraintRelatableTarget) {
+        self.snp.makeConstraints { (make) in
+            make.left.equalTo(allEdges)
+            make.top.equalTo(allEdges)
+            make.right.equalTo(allEdges)
+            make.bottom.equalTo(allEdges)
+        }
+    }
+    
     func makeConstraintsToLeftTopRight(left: ConstraintRelatableTarget, top: ConstraintRelatableTarget, right: ConstraintRelatableTarget, height: ConstraintRelatableTarget) {
         self.snp.makeConstraints { (make) in
             make.left.equalTo(left)
@@ -197,48 +208,56 @@ extension UIView {
         }
     }
     
-    func makeConstraintsToLeftTopRight(left: ConstraintRelatableTarget, top: ConstraintOffsetTarget, topRelativeView: ConstraintRelatableTarget, right: ConstraintRelatableTarget, height: ConstraintRelatableTarget) {
+    func makeConstraintsToLeftTopRightRelative(left: ConstraintRelatableTarget, topRelativeView: ConstraintRelatableTarget, topOffset: ConstraintOffsetTarget, right: CGFloat, height: ConstraintRelatableTarget) {
         self.snp.makeConstraints { (make) in
             make.left.equalTo(left)
-            make.top.equalTo(topRelativeView).offset(top)
-            make.right.equalTo(right)
+            make.top.equalTo(topRelativeView).offset(topOffset)
+            make.width.equalTo(screenWidth + right*2)
             make.height.equalTo(height)
         }
     }
     
-    func makeConstraintsToLeftTop(left: ConstraintRelatableTarget, top: ConstraintOffsetTarget, topRelativeView: ConstraintRelatableTarget, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
+    func makeConstraintsToLeftTopRelative(left: ConstraintRelatableTarget, topRelativeView: ConstraintRelatableTarget, topOffset: ConstraintOffsetTarget, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
         self.snp.makeConstraints { (make) in
             make.left.equalTo(left)
-            make.top.equalTo(topRelativeView).offset(top)
+            make.top.equalTo(topRelativeView).offset(topOffset)
             make.width.equalTo(width)
             make.height.equalTo(height)
         }
     }
     
-    func makeConstraintsToRightTop(Right: ConstraintRelatableTarget, top: ConstraintOffsetTarget, topRelativeView: ConstraintRelatableTarget, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
+    func makeConstraintsToRightTopRelative(Right: ConstraintRelatableTarget, topRelativeView: ConstraintRelatableTarget, topOffset: ConstraintOffsetTarget, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
         self.snp.makeConstraints { (make) in
             make.left.equalTo(Right)
-            make.top.equalTo(topRelativeView).offset(top)
+            make.top.equalTo(topRelativeView).offset(topOffset)
             make.width.equalTo(width)
             make.height.equalTo(height)
         }
     }
     
-    func makeConstraintsToCenterXTop(centerX: UIView, top: ConstraintOffsetTarget, topRelativeView: ConstraintRelatableTarget, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in            make.centerX.equalTo(centerX)
-            make.top.equalTo(topRelativeView).offset(top)
+    func makeConstraintsToCenterXTopRelative(centerX: UIView, topRelativeView: ConstraintRelatableTarget, topOffset: ConstraintOffsetTarget, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
+        self.snp.makeConstraints { (make) in
+            make.centerX.equalTo(centerX)
+            make.top.equalTo(topRelativeView).offset(topOffset)
             make.width.equalTo(width)
             make.height.equalTo(height)
+        }
+    }
+    
+    
+    
+    // ScrollViewy设置bottom以确定contenesize.height
+    func makeConstraintsToBottom(bottom: ConstraintRelatableTarget) {
+        self.snp.makeConstraints { (make) in
+            make.bottom.equalTo(bottom)
+        }
+    }
+    
+    func makeConstraintsToBottomRelative(bottom: ConstraintOffsetTarget, bottomRelativeView: ConstraintRelatableTarget) {
+        self.snp.makeConstraints { (make) in
+            make.bottom.equalTo(bottomRelativeView).offset(bottom)
+        }
+    }
 
-        }
-    }
-    
-    
-    
-    // 重设高度
-    func resetHeight(UIViewbottom: ConstraintRelatableTarget, bottomOffset: ConstraintOffsetTarget) {
-        self.snp.updateConstraints { (x) in
-            x.height.equalTo(UIViewbottom).offset(bottomOffset)
-        }
-    }
 }
+
