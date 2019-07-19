@@ -9,18 +9,18 @@
 import Foundation
 import UIKit
 
-func createUIView(parentView: UIView) -> UIView {
-    let myView = UIView()
-    parentView.addSubview(myView)
-    return myView
-}
+//func createUIView(parentView: UIView) -> UIView {
+//    let myView = UIView()
+//    parentView.addSubview(myView)
+//    return myView
+//}
 
-func createUILabel(parentView: UIView, text: String) -> UILabel {
-    let myLabel = UILabel()
-    myLabel.text = text
-    parentView.addSubview(myLabel)
-    return myLabel
-}
+//func createUILabel(parentView: UIView, text: String) -> UILabel {
+//    let myLabel = UILabel()
+//    myLabel.text = text
+//    parentView.addSubview(myLabel)
+//    return myLabel
+//}
 
 func createUIImageView(parentView: UIView, imageName: String) -> UIImageView {
     let myImageView = UIImageView()

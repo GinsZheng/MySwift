@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 
 extension UIView {
+    
+    func set(parentView: UIView) {
+        parentView.addSubview(self)
+    }
+    
     func addShadow(color: String, x: CGFloat, y: CGFloat, radius: CGFloat) {
         self.layer.shadowColor = UIColor.hex(color).cgColor
         self.layer.shadowOpacity = 1
@@ -41,6 +46,12 @@ extension UIView {
 
 
 extension UILabel {
+    
+    func set(parentView: UIView, text: String) {
+        self.text = text
+        parentView.addSubview(self)
+    }
+    
     func setFontStyle(color: String, size: CGFloat, weight: UIFont.Weight = UIFont.Weight.regular) {
         self.font = UIFont.systemFont(ofSize: size, weight: weight)
         self.textColor = UIColor.hex(color)
@@ -75,6 +86,12 @@ extension UILabel {
 
 
 extension UITextView {
+    
+    func set(parentView: UIView, text: String) {
+        self.text = text
+        parentView.addSubview(self)
+    }
+    
     func setFontStyle(color: String, size: CGFloat, weight: UIFont.Weight = UIFont.Weight.regular) {
         self.font = UIFont.systemFont(ofSize: size, weight: weight)
         self.textColor = UIColor.hex(color)
@@ -89,6 +106,25 @@ extension UITextView {
 
 }
 
+
+
+extension UITextField {
+    
+    func set(parentView: UIView, placeholder: String) {
+        self.placeholder = placeholder
+        parentView.addSubview(self)
+    }
+}
+
+
+
+extension UIImageView {
+    
+    func set(parentView: UIView, imageName: String) {
+        self.image = UIImage(named: imageName)
+        parentView.addSubview(self)
+    }
+}
 
 
 extension UIButton {
