@@ -212,7 +212,7 @@ extension UIView {
         self.snp.makeConstraints { (make) in
             make.left.equalTo(left)
             make.top.equalTo(topRelativeView).offset(topOffset)
-            make.width.equalTo(screenWidth + right*2)
+            make.width.equalTo(ScreenWidth + right*2)
             make.height.equalTo(height)
         }
     }

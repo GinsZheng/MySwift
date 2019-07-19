@@ -25,6 +25,6 @@ func getTabBarHeight(_ ofViewControlor: UIViewController) -> CGFloat {
 }
 
 func getSafeAreaHeight(_ ofViewControlor: UIViewController) -> CGFloat {
-    return screenHeight - navBarHeight - getTabBarHeight(ofViewControlor)
+    return ScreenHeight - NavBarHeight - getTabBarHeight(ofViewControlor)
 }
 

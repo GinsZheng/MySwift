@@ -9,13 +9,8 @@
 import Foundation
 import UIKit
 
-let screenHeight = UIScreen.main.bounds.size.height
-let screenWidth = UIScreen.main.bounds.size.width
-let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
-let navBarHeight = statusBarHeight + 44
-let separatorHeight = 1 / UIScreen.main.scale
-let heheda = 11
-let mainColor = "2c9eff"
-let gray1 = "f5f6f8"
-let shadowColor = "26133660"
-let orange = "ff7a00"
+let ScreenHeight = UIScreen.main.bounds.size.height
+let ScreenWidth = UIScreen.main.bounds.size.width
+let StatusBarHeight = UIApplication.shared.statusBarFrame.size.height
+let NavBarHeight = StatusBarHeight + 44
+let SeparatorHeight = 1 / UIScreen.main.scale
