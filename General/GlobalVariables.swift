@@ -14,3 +14,5 @@ let ScreenWidth = UIScreen.main.bounds.size.width
 let StatusBarHeight = UIApplication.shared.statusBarFrame.size.height
 let NavBarHeight = StatusBarHeight + 44
 let SeparatorHeight = 1 / UIScreen.main.scale
+
+

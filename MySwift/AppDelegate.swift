@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  MySwift
+//  SwiftNotes
 //
-//  Created by GinsMac on 2019/5/30.
+//  Created by GinsMac on 2019/6/8.
 //  Copyright © 2019 GinsMac. All rights reserved.
 //
 
@@ -16,6 +16,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // 创建 tabBar 实例
+        let firstTab = FirstTab()
+        let secondTab = SecondTab()
+        let modelTab = ModelTab()
+        let forthTab = ForthTab()
+        
+        // 创建导航控制器
+        let firstNav = UINavigationController(rootViewController: firstTab)
+        let secondNav = UINavigationController(rootViewController: secondTab)
+        let thirdNav = UINavigationController(rootViewController: modelTab)
+        let forthNav = UINavigationController(rootViewController: forthTab)
+        
+        // 设置tabBar各图标
+        firstTab.tabBarItem.image = UIImage(named: "tab-discovery")
+        secondTab.tabBarItem.image = UIImage(named: "tab-saved")
+        modelTab.tabBarItem.image = UIImage(named: "tab-tickets")
+        forthTab.tabBarItem.image = UIImage(named: "tab-mine")
+        
+        // 设置tatabBar各标题
+        firstTab.tabBarItem.title = "View"
+        secondTab.tabBarItem.title = "Controller"
+        modelTab.tabBarItem.title = "Model"
+        forthTab.tabBarItem.title = "试验区"
+        
+        // 把tabBar实例添加到UITabBarController，并设置样式
+        let tabBar = UITabBarController()
+        tabBar.viewControllers = [firstNav, secondNav, thirdNav, forthNav]
+        tabBar.tabBar.isTranslucent = false
+        tabBar.tabBar.barTintColor = UIColor.white
+        tabBar.tabBar.shadowImage = getImageWithColor(color: "f5f6f8")
+        
+        // 将window的一级页面设置为tabBar
+        self.window?.rootViewController = tabBar
+        self.window?.backgroundColor = UIColor.white
+        
+        // 设置启动时显示的tab
+        tabBar.selectedIndex = 0
+        
+        
+        
         return true
     }
 

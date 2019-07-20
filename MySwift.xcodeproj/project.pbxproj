@@ -14,7 +14,6 @@
 		7A019C4C22AEA0100034C5A3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A019C1522AE9FED0034C5A3 /* Alamofire.framework */; };
 		7A019C4D22AEA0100034C5A3 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A019C1522AE9FED0034C5A3 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A66D4CA22A028C8006BDBC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66D4C922A028C8006BDBC7 /* AppDelegate.swift */; };
-		7A66D4CC22A028C8006BDBC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66D4CB22A028C8006BDBC7 /* ViewController.swift */; };
 		7A66D4CF22A028C8006BDBC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A66D4CD22A028C8006BDBC7 /* Main.storyboard */; };
 		7A66D4D122A028C9006BDBC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A66D4D022A028C9006BDBC7 /* Assets.xcassets */; };
 		7A66D4D422A028C9006BDBC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A66D4D222A028C9006BDBC7 /* LaunchScreen.storyboard */; };
@@ -25,6 +24,13 @@
 		7A66D58322A406BC006BDBC7 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66D58222A406BC006BDBC7 /* GlobalVariables.swift */; };
 		7A66D58D22A4297E006BDBC7 /* UIkitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66D58C22A4297E006BDBC7 /* UIkitExtension.swift */; };
 		7A7153EE22A6B5E7004C295E /* CreateUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7153ED22A6B5E7004C295E /* CreateUIView.swift */; };
+		7AA63B1A22E36AD100EAA214 /* ModelTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63AFF22E36AD000EAA214 /* ModelTab.swift */; };
+		7AA63B1B22E36AD100EAA214 /* FirstTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63B0022E36AD000EAA214 /* FirstTab.swift */; };
+		7AA63B1C22E36AD100EAA214 /* ForthTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63B0122E36AD100EAA214 /* ForthTab.swift */; };
+		7AA63B1D22E36AD100EAA214 /* SecondTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63B0222E36AD100EAA214 /* SecondTab.swift */; };
+		7AA63B3422E36B6000EAA214 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63B3222E36B6000EAA214 /* Colors.swift */; };
+		7AA63B3522E36B6000EAA214 /* GeneralSubpage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63B3322E36B6000EAA214 /* GeneralSubpage.swift */; };
+		7AA63B3722E36C8A00EAA214 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63B3622E36C8A00EAA214 /* Calculator.swift */; };
 		7AB9252422A6AD9800C35AD5 /* GlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB9252322A6AD9800C35AD5 /* GlobalFunction.swift */; };
 /* End PBXBuildFile section */
 
@@ -200,7 +206,6 @@
 		7A019C3B22AE9FF70034C5A3 /* SnapKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SnapKit.xcodeproj; path = "../../SwiftKit/Library/SnapKit-develop/SnapKit.xcodeproj"; sourceTree = "<group>"; };
 		7A66D4C622A028C8006BDBC7 /* MySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A66D4C922A028C8006BDBC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7A66D4CB22A028C8006BDBC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7A66D4CE22A028C8006BDBC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7A66D4D022A028C9006BDBC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A66D4D322A028C9006BDBC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -216,6 +221,13 @@
 		7A66D58222A406BC006BDBC7 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		7A66D58C22A4297E006BDBC7 /* UIkitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIkitExtension.swift; sourceTree = "<group>"; };
 		7A7153ED22A6B5E7004C295E /* CreateUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUIView.swift; sourceTree = "<group>"; };
+		7AA63AFF22E36AD000EAA214 /* ModelTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTab.swift; sourceTree = "<group>"; };
+		7AA63B0022E36AD000EAA214 /* FirstTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTab.swift; sourceTree = "<group>"; };
+		7AA63B0122E36AD100EAA214 /* ForthTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForthTab.swift; sourceTree = "<group>"; };
+		7AA63B0222E36AD100EAA214 /* SecondTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTab.swift; sourceTree = "<group>"; };
+		7AA63B3222E36B6000EAA214 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = ../../SwiftNotes/General/Colors.swift; sourceTree = "<group>"; };
+		7AA63B3322E36B6000EAA214 /* GeneralSubpage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralSubpage.swift; path = ../../SwiftNotes/General/GeneralSubpage.swift; sourceTree = "<group>"; };
+		7AA63B3622E36C8A00EAA214 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		7AB9252322A6AD9800C35AD5 /* GlobalFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -310,7 +322,12 @@
 			isa = PBXGroup;
 			children = (
 				7A66D4C922A028C8006BDBC7 /* AppDelegate.swift */,
-				7A66D4CB22A028C8006BDBC7 /* ViewController.swift */,
+				7AA63B0022E36AD000EAA214 /* FirstTab.swift */,
+				7AA63B0222E36AD100EAA214 /* SecondTab.swift */,
+				7AA63AFF22E36AD000EAA214 /* ModelTab.swift */,
+				7AA63B0122E36AD100EAA214 /* ForthTab.swift */,
+				7AA63B0622E36AD100EAA214 /* FirstTabSubpage */,
+				7AA63B0322E36AD100EAA214 /* SecondTabSubpage */,
 				7A66D4CD22A028C8006BDBC7 /* Main.storyboard */,
 				7A66D4D022A028C9006BDBC7 /* Assets.xcassets */,
 				7A66D4D222A028C9006BDBC7 /* LaunchScreen.storyboard */,
@@ -356,8 +373,25 @@
 				7A7153ED22A6B5E7004C295E /* CreateUIView.swift */,
 				7A66D56A22A038A0006BDBC7 /* MakeConstraints.swift */,
 				7A66D58C22A4297E006BDBC7 /* UIkitExtension.swift */,
+				7AA63B3222E36B6000EAA214 /* Colors.swift */,
+				7AA63B3322E36B6000EAA214 /* GeneralSubpage.swift */,
 			);
 			path = General;
+			sourceTree = "<group>";
+		};
+		7AA63B0322E36AD100EAA214 /* SecondTabSubpage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SecondTabSubpage;
+			sourceTree = "<group>";
+		};
+		7AA63B0622E36AD100EAA214 /* FirstTabSubpage */ = {
+			isa = PBXGroup;
+			children = (
+				7AA63B3622E36C8A00EAA214 /* Calculator.swift */,
+			);
+			path = FirstTabSubpage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -626,11 +660,17 @@
 			files = (
 				7A66D58D22A4297E006BDBC7 /* UIkitExtension.swift in Sources */,
 				7A66D58322A406BC006BDBC7 /* GlobalVariables.swift in Sources */,
+				7AA63B1B22E36AD100EAA214 /* FirstTab.swift in Sources */,
 				7A7153EE22A6B5E7004C295E /* CreateUIView.swift in Sources */,
 				7AB9252422A6AD9800C35AD5 /* GlobalFunction.swift in Sources */,
 				7A66D56B22A038A0006BDBC7 /* MakeConstraints.swift in Sources */,
+				7AA63B1D22E36AD100EAA214 /* SecondTab.swift in Sources */,
+				7AA63B1C22E36AD100EAA214 /* ForthTab.swift in Sources */,
+				7AA63B3722E36C8A00EAA214 /* Calculator.swift in Sources */,
+				7AA63B3522E36B6000EAA214 /* GeneralSubpage.swift in Sources */,
+				7AA63B3422E36B6000EAA214 /* Colors.swift in Sources */,
 				7A66D53522A02CD2006BDBC7 /* SetColorInHex.swift in Sources */,
-				7A66D4CC22A028C8006BDBC7 /* ViewController.swift in Sources */,
+				7AA63B1A22E36AD100EAA214 /* ModelTab.swift in Sources */,
 				7A66D4CA22A028C8006BDBC7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
