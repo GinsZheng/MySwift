@@ -5,93 +5,56 @@ import SnapKit
 // snapKit autolayout encapsulation
 
 extension UILabel {
-    func makeConstraintsToLeftTop(left: ConstraintRelatableTarget, top: ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.left.equalTo(left)
-            make.top.equalTo(top)
-            make.height.equalTo(getDefaultLineheight())
-        }
+    func makeConstraintsToLeftTop(left: CGFloat, top: CGFloat) {
+        self.frame = CGRect(x: left, y: top, width: getLabelWidth(), height: getDefaultLineheight())
     }
     
-    func makeConstraintsToLeftCenterY(left: ConstraintRelatableTarget, centerY: UIView) {
-        self.snp.makeConstraints { (make) in
-            make.left.equalTo(left)
-            make.centerY.equalTo(centerY)
-            make.height.equalTo(getDefaultLineheight())
-        }
+    func makeConstraintsToLeftCenterY(left: CGFloat, centerY: UIView) {
+        self.frame.size = CGSize(width: getLabelWidth(), height: getDefaultLineheight())
+        self.frame.origin.x = left
+        self.center.y = centerY.y + centerY.height/2
     }
     
-    func makeConstraintsToLeftBottom(left: ConstraintRelatableTarget, bottom: ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.left.equalTo(left)
-            make.bottom.equalTo(bottom)
-            make.height.equalTo(getDefaultLineheight())
-        }
+    func makeConstraintsToLeftBottom(left: CGFloat, bottom: CGFloat) {
+        self.frame.size = CGSize(width: getLabelWidth(), height: getDefaultLineheight())
+        self.frame.origin.x = left
+        self.frame.origin.y = self.superview!.height - self.height - bottom
     }
     
-    func makeConstraintsToCenterXTop(centerX: UIView, top: ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.centerX.equalTo(centerX)
-            make.top.equalTo(top)
-            make.height.equalTo(getDefaultLineheight())
-        }
+    func makeConstraintsToCenterXTop(centerX: UIView, top: CGFloat) {
+        self.frame.size = CGSize(width: getLabelWidth(), height: getDefaultLineheight())
+        self.center.x = centerX.x + centerX.width/2
+        self.frame.origin.y = top
     }
     
     func makeConstraintsToCenterXCenterY(center: UIView) {
-        self.snp.makeConstraints { (make) in
-            make.center.equalTo(center)
-            make.height.equalTo(getDefaultLineheight())
-        }
+        self.frame.size = CGSize(width: getLabelWidth(), height: getDefaultLineheight())
+        self.center.x = center.x + center.width/2
+        self.center.y = center.y + center.height/2
     }
     
-    func makeConstraintsToCenterXBottom(centerX: UIView, bottom: ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.centerX.equalTo(centerX)
-            make.bottom.equalTo(bottom)
-            make.height.equalTo(getDefaultLineheight())
-        }
+    func makeConstraintsToCenterXBottom(centerX: UIView, bottom: CGFloat) {
+        self.frame.size = CGSize(width: getLabelWidth(), height: getDefaultLineheight())
+        self.center.x = centerX.x + centerX.width/2
+        self.frame.origin.y = self.superview!.height - self.height - bottom
     }
     
-    func makeConstraintsToRightTop(right: ConstraintRelatableTarget, top: ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.right.equalTo(right)
-            make.top.equalTo(top)
-            make.height.equalTo(getDefaultLineheight())
-        }
+    func makeConstraintsToRightTop(right: CGFloat, top: CGFloat) {
+        self.frame.size = CGSize(width: getLabelWidth(), height: getDefaultLineheight())
+        self.frame.origin.x = self.superview!.width - self.width - right
+        self.frame.origin.y = top
     }
     
-    func makeConstraintsToRightCenterY(right: ConstraintRelatableTarget, centerY: UIView) {
-        self.snp.makeConstraints { (make) in
-            make.right.equalTo(right)
-            make.centerY.equalTo(centerY)
-            make.height.equalTo(getDefaultLineheight())
-        }
+    func makeConstraintsToRightCenterY(right: CGFloat, centerY: UIView) {
+        self.frame.size = CGSize(width: getLabelWidth(), height: getDefaultLineheight())
+        self.frame.origin.x = self.superview!.width - self.width - right
+        self.center.y = centerY.y + centerY.height/2
     }
     
-    func makeConstraintsToRightBottom(right: ConstraintRelatableTarget, bottom: ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.right.equalTo(right)
-            make.bottom.equalTo(bottom)
-            make.height.equalTo(getDefaultLineheight())
-        }
-    }
-    
-    
-    // 常用其他布局
-    func makeConstraintsToLeftTopRelative(left: ConstraintRelatableTarget, top: ConstraintOffsetTarget, topRelativeView: ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.left.equalTo(left)
-            make.top.equalTo(topRelativeView).offset(top)
-            make.height.equalTo(getDefaultLineheight())
-        }
-    }
-    
-    func makeConstraintsToRightTopRelative(right: ConstraintRelatableTarget, top: ConstraintOffsetTarget, topRelativeView: ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.right.equalTo(right)
-            make.top.equalTo(topRelativeView).offset(top)
-            make.height.equalTo(getDefaultLineheight())
-        }
+    func makeConstraintsToRightBottom(right: CGFloat, bottom: CGFloat) {
+        self.frame.size = CGSize(width: getLabelWidth(), height: getDefaultLineheight())
+        self.frame.origin.x = self.superview!.width - self.width - right
+        self.frame.origin.y = self.superview!.height - self.height - bottom
     }
 
 }
@@ -99,165 +62,82 @@ extension UILabel {
 
 
 extension UIView {
-    func makeConstraintsToLeftTop(left: ConstraintRelatableTarget, top: ConstraintRelatableTarget, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.left.equalTo(left)
-            make.top.equalTo(top)
-            make.width.equalTo(width)
-            make.height.equalTo(height)
-        }
+    func makeConstraintsToLeftTop(left: CGFloat, top: CGFloat, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: width, height: height)
     }
     
-    func makeConstraintsToLeftCenterY(left: ConstraintRelatableTarget, centerY: UIView, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.left.equalTo(left)
-            make.centerY.equalTo(centerY)
-            make.width.equalTo(width)
-            make.height.equalTo(height)
-        }
+    func makeConstraintsToLeftCenterY(left: CGFloat, centerY: UIView, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: width, height: height)
+        self.frame.origin.x = left
+        self.center.y = centerY.y + centerY.height/2
     }
     
-    func makeConstraintsToLeftBottom(left: ConstraintRelatableTarget, bottom: ConstraintRelatableTarget, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.left.equalTo(left)
-            make.bottom.equalTo(bottom)
-            make.width.equalTo(width)
-            make.height.equalTo(height)
-        }
-    }
-
-    func makeConstraintsToCenterXTop(centerX: UIView, top: ConstraintRelatableTarget, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.centerX.equalTo(centerX)
-            make.top.equalTo(top)
-            make.width.equalTo(width)
-            make.height.equalTo(height)
-        }
+    func makeConstraintsToLeftBottom(left: CGFloat, bottom: CGFloat, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: width, height: height)
+        self.frame.origin.x = left
+        self.frame.origin.y = self.superview!.height - self.height - bottom
     }
     
-    func makeConstraintsToCenterXCenterY(center: UIView, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.center.equalTo(center)
-            make.width.equalTo(width)
-            make.height.equalTo(height)
-        }
+    func makeConstraintsToCenterXTop(centerX: UIView, top: CGFloat, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: width, height: height)
+        self.center.x = centerX.x + centerX.width/2
+        self.frame.origin.y = top
     }
     
-    func makeConstraintsToCenterXBottom(centerX: UIView, bottom: ConstraintRelatableTarget, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.centerX.equalTo(centerX)
-            make.bottom.equalTo(bottom)
-            make.width.equalTo(width)
-            make.height.equalTo(height)
-        }
+    func makeConstraintsToCenterXCenterY(center: UIView, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: width, height: height)
+        self.center.x = center.x + center.width/2
+        self.center.y = center.y + center.height/2
     }
     
-    func makeConstraintsToRightTop(right: ConstraintRelatableTarget, top: ConstraintRelatableTarget, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.right.equalTo(right)
-            make.top.equalTo(top)
-            make.width.equalTo(width)
-            make.height.equalTo(height)
-        }
+    func makeConstraintsToCenterXBottom(centerX: UIView, bottom: CGFloat, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: width, height: height)
+        self.center.x = centerX.x + centerX.width/2
+        self.frame.origin.y = self.superview!.height - self.height - bottom
     }
     
-    func makeConstraintsToRightCenterY(right: ConstraintRelatableTarget, centerY: UIView, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.right.equalTo(right)
-            make.centerY.equalTo(centerY)
-            make.width.equalTo(width)
-            make.height.equalTo(height)
-        }
+    func makeConstraintsToRightTop(right: CGFloat, top: CGFloat, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: width, height: height)
+        self.frame.origin.x = self.superview!.width - self.width - right
+        self.frame.origin.y = top
     }
     
-    func makeConstraintsToRightBottom(right: ConstraintRelatableTarget, bottom: ConstraintRelatableTarget, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.right.equalTo(right)
-            make.bottom.equalTo(bottom)
-            make.width.equalTo(width)
-            make.height.equalTo(height)
-        }
+    func makeConstraintsToRightCenterY(right: CGFloat, centerY: UIView, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: width, height: height)
+        self.frame.origin.x = self.superview!.width - self.width - right
+        self.center.y = centerY.y + centerY.height/2
     }
+    
+    func makeConstraintsToRightBottom(right: CGFloat, bottom: CGFloat, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: width, height: height)
+        self.frame.origin.x = self.superview!.width - self.width - right
+        self.frame.origin.y = self.superview!.height - self.height - bottom
+    }
+    
     
     
     // 常用其他约束
-    func makeConstraintsToEdges(left: ConstraintRelatableTarget, top: ConstraintRelatableTarget, right: ConstraintRelatableTarget, bottom: ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.left.equalTo(left)
-            make.top.equalTo(top)
-            make.right.equalTo(right)
-            make.bottom.equalTo(bottom)
-        }
+    func makeConstraintsToEdges(left: CGFloat, top: CGFloat, right: CGFloat, bottom: CGFloat) {
+        self.frame.origin.x = left
+        self.frame.origin.y = top
+        self.frame.size.width = self.superview!.width - left - right
+        self.frame.size.height = self.superview!.height - top - bottom
     }
     
-    func makeConstraintsToEdges(allEdges: ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.left.equalTo(allEdges)
-            make.top.equalTo(allEdges)
-            make.right.equalTo(allEdges)
-            make.bottom.equalTo(allEdges)
-        }
+    func makeConstraintsToEdges(allEdges: CGFloat) {
+        self.frame.origin.x = allEdges
+        self.frame.origin.y = allEdges
+        self.frame.size.width = self.superview!.width - allEdges*2
+        self.frame.size.height = self.superview!.height - allEdges*2
     }
     
-    func makeConstraintsToLeftTopRight(left: ConstraintRelatableTarget, top: ConstraintRelatableTarget, right: ConstraintRelatableTarget, height: ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.left.equalTo(left)
-            make.top.equalTo(top)
-            make.right.equalTo(right)
-            make.height.equalTo(height)
-        }
+    func makeConstraintsToLeftTopRight(left: CGFloat, top: CGFloat, right: CGFloat, height: CGFloat) {
+        self.frame.origin.x = left
+        self.frame.origin.y = top
+        self.frame.size.width = self.superview!.width - left - right
+        self.frame.size.height = height
     }
     
-    func makeConstraintsToLeftTopRightRelative(left: ConstraintRelatableTarget, topRelativeView: ConstraintRelatableTarget, topOffset: ConstraintOffsetTarget, right: CGFloat, height: ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.left.equalTo(left)
-            make.top.equalTo(topRelativeView).offset(topOffset)
-            make.width.equalTo(ScreenWidth + right*2)
-            make.height.equalTo(height)
-        }
-    }
-    
-    func makeConstraintsToLeftTopRelative(left: ConstraintRelatableTarget, topRelativeView: ConstraintRelatableTarget, topOffset: ConstraintOffsetTarget, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.left.equalTo(left)
-            make.top.equalTo(topRelativeView).offset(topOffset)
-            make.width.equalTo(width)
-            make.height.equalTo(height)
-        }
-    }
-    
-    func makeConstraintsToRightTopRelative(Right: ConstraintRelatableTarget, topRelativeView: ConstraintRelatableTarget, topOffset: ConstraintOffsetTarget, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.left.equalTo(Right)
-            make.top.equalTo(topRelativeView).offset(topOffset)
-            make.width.equalTo(width)
-            make.height.equalTo(height)
-        }
-    }
-    
-    func makeConstraintsToCenterXTopRelative(centerX: UIView, topRelativeView: ConstraintRelatableTarget, topOffset: ConstraintOffsetTarget, width: ConstraintRelatableTarget, height:ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.centerX.equalTo(centerX)
-            make.top.equalTo(topRelativeView).offset(topOffset)
-            make.width.equalTo(width)
-            make.height.equalTo(height)
-        }
-    }
-    
-    
-    
-    // ScrollViewy设置bottom以确定contenesize.height
-    func makeConstraintsToBottom(bottom: ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.bottom.equalTo(bottom)
-        }
-    }
-    
-    func makeConstraintsToBottomRelative(bottom: ConstraintOffsetTarget, bottomRelativeView: ConstraintRelatableTarget) {
-        self.snp.makeConstraints { (make) in
-            make.bottom.equalTo(bottomRelativeView).offset(bottom)
-        }
-    }
 
 }
 

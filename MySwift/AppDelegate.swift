@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let firstTab = FirstTab()
         let secondTab = SecondTab()
         let modelTab = ModelTab()
-        let forthTab = ForthTab()
+        let forthTab = TestTab()
         
         // 创建导航控制器
         let firstNav = UINavigationController(rootViewController: firstTab)
@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         firstTab.tabBarItem.title = "View"
         secondTab.tabBarItem.title = "Controller"
         modelTab.tabBarItem.title = "Model"
-        forthTab.tabBarItem.title = "试验区"
+        forthTab.tabBarItem.title = "Test"
         
         // 把tabBar实例添加到UITabBarController，并设置样式
         let tabBar = UITabBarController()

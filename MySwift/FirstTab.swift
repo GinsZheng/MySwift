@@ -10,8 +10,8 @@ import UIKit
 
 class FirstTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let controlList = ["Calculator"]
-    let controlPage = [Calculator()]
+    let controlList = ["Simple Calculator", "Calculator"]
+    let controlPage = [SimpleCalculator(), Calculator()]
 
     
     override func viewDidLoad() {
@@ -20,7 +20,7 @@ class FirstTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
-        scrollView.makeConstraintsToLeftTop(left: 0, top: NavBarHeight, width: view, height: getSafeAreaHeight(self))
+        scrollView.makeConstraintsToLeftTop(left: 0, top: kNavBarHeight, width: view, height: getSafeAreaHeight(self))
         
         let viewContainer = UIView()
         scrollView.addSubview(viewContainer)
@@ -28,7 +28,7 @@ class FirstTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         let table = UITableView()
         viewContainer.addSubview(table)
-        table.makeConstraintsToLeftTop(left: 0, top: 0, width: ScreenWidth, height: 56*controlList.count)
+        table.makeConstraintsToLeftTop(left: 0, top: 0, width: kScreenWidth, height: 56*controlList.count)
         table.makeConstraintsToBottom(bottom: viewContainer)
         table.dataSource = self
         table.delegate = self

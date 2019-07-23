@@ -9,10 +9,9 @@
 import Foundation
 import UIKit
 
-let ScreenHeight = UIScreen.main.bounds.size.height
-let ScreenWidth = UIScreen.main.bounds.size.width
-let StatusBarHeight = UIApplication.shared.statusBarFrame.size.height
-let NavBarHeight = StatusBarHeight + 44
-let SeparatorHeight = 1 / UIScreen.main.scale
-
+let kScreenHeight = UIScreen.main.bounds.size.height
+let kScreenWidth = UIScreen.main.bounds.size.width
+let kStatusBarHeight = UIApplication.shared.statusBarFrame.size.height
+let kNavBarHeight = kStatusBarHeight + 44
+let kSeparatorHeight = 1 / UIScreen.main.scale
 

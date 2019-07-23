@@ -26,12 +26,13 @@
 		7A7153EE22A6B5E7004C295E /* CreateUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7153ED22A6B5E7004C295E /* CreateUIView.swift */; };
 		7AA63B1A22E36AD100EAA214 /* ModelTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63AFF22E36AD000EAA214 /* ModelTab.swift */; };
 		7AA63B1B22E36AD100EAA214 /* FirstTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63B0022E36AD000EAA214 /* FirstTab.swift */; };
-		7AA63B1C22E36AD100EAA214 /* ForthTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63B0122E36AD100EAA214 /* ForthTab.swift */; };
+		7AA63B1C22E36AD100EAA214 /* TestTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63B0122E36AD100EAA214 /* TestTab.swift */; };
 		7AA63B1D22E36AD100EAA214 /* SecondTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63B0222E36AD100EAA214 /* SecondTab.swift */; };
 		7AA63B3422E36B6000EAA214 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63B3222E36B6000EAA214 /* Colors.swift */; };
 		7AA63B3522E36B6000EAA214 /* GeneralSubpage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63B3322E36B6000EAA214 /* GeneralSubpage.swift */; };
-		7AA63B3722E36C8A00EAA214 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63B3622E36C8A00EAA214 /* Calculator.swift */; };
+		7AA63B3722E36C8A00EAA214 /* SimpleCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63B3622E36C8A00EAA214 /* SimpleCalculator.swift */; };
 		7AB9252422A6AD9800C35AD5 /* GlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB9252322A6AD9800C35AD5 /* GlobalFunction.swift */; };
+		7ABB1A7D22E5877B002E548F /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABB1A7C22E5877B002E548F /* Calculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,12 +224,13 @@
 		7A7153ED22A6B5E7004C295E /* CreateUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUIView.swift; sourceTree = "<group>"; };
 		7AA63AFF22E36AD000EAA214 /* ModelTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTab.swift; sourceTree = "<group>"; };
 		7AA63B0022E36AD000EAA214 /* FirstTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTab.swift; sourceTree = "<group>"; };
-		7AA63B0122E36AD100EAA214 /* ForthTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForthTab.swift; sourceTree = "<group>"; };
+		7AA63B0122E36AD100EAA214 /* TestTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTab.swift; sourceTree = "<group>"; };
 		7AA63B0222E36AD100EAA214 /* SecondTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTab.swift; sourceTree = "<group>"; };
 		7AA63B3222E36B6000EAA214 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = ../../SwiftNotes/General/Colors.swift; sourceTree = "<group>"; };
 		7AA63B3322E36B6000EAA214 /* GeneralSubpage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralSubpage.swift; path = ../../SwiftNotes/General/GeneralSubpage.swift; sourceTree = "<group>"; };
-		7AA63B3622E36C8A00EAA214 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		7AA63B3622E36C8A00EAA214 /* SimpleCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCalculator.swift; sourceTree = "<group>"; };
 		7AB9252322A6AD9800C35AD5 /* GlobalFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunction.swift; sourceTree = "<group>"; };
+		7ABB1A7C22E5877B002E548F /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,7 +327,7 @@
 				7AA63B0022E36AD000EAA214 /* FirstTab.swift */,
 				7AA63B0222E36AD100EAA214 /* SecondTab.swift */,
 				7AA63AFF22E36AD000EAA214 /* ModelTab.swift */,
-				7AA63B0122E36AD100EAA214 /* ForthTab.swift */,
+				7AA63B0122E36AD100EAA214 /* TestTab.swift */,
 				7AA63B0622E36AD100EAA214 /* FirstTabSubpage */,
 				7AA63B0322E36AD100EAA214 /* SecondTabSubpage */,
 				7A66D4CD22A028C8006BDBC7 /* Main.storyboard */,
@@ -389,7 +391,8 @@
 		7AA63B0622E36AD100EAA214 /* FirstTabSubpage */ = {
 			isa = PBXGroup;
 			children = (
-				7AA63B3622E36C8A00EAA214 /* Calculator.swift */,
+				7AA63B3622E36C8A00EAA214 /* SimpleCalculator.swift */,
+				7ABB1A7C22E5877B002E548F /* Calculator.swift */,
 			);
 			path = FirstTabSubpage;
 			sourceTree = "<group>";
@@ -665,8 +668,9 @@
 				7AB9252422A6AD9800C35AD5 /* GlobalFunction.swift in Sources */,
 				7A66D56B22A038A0006BDBC7 /* MakeConstraints.swift in Sources */,
 				7AA63B1D22E36AD100EAA214 /* SecondTab.swift in Sources */,
-				7AA63B1C22E36AD100EAA214 /* ForthTab.swift in Sources */,
-				7AA63B3722E36C8A00EAA214 /* Calculator.swift in Sources */,
+				7AA63B1C22E36AD100EAA214 /* TestTab.swift in Sources */,
+				7ABB1A7D22E5877B002E548F /* Calculator.swift in Sources */,
+				7AA63B3722E36C8A00EAA214 /* SimpleCalculator.swift in Sources */,
 				7AA63B3522E36B6000EAA214 /* GeneralSubpage.swift in Sources */,
 				7AA63B3422E36B6000EAA214 /* Colors.swift in Sources */,
 				7A66D53522A02CD2006BDBC7 /* SetColorInHex.swift in Sources */,
