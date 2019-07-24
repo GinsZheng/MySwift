@@ -15,3 +15,4 @@ let kStatusBarHeight = UIApplication.shared.statusBarFrame.size.height
 let kNavBarHeight = kStatusBarHeight + 44
 let kSeparatorHeight = 1 / UIScreen.main.scale
 
+let kCellHeight: CGFloat = 56
