@@ -43,11 +43,11 @@ class FirstTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let cellTitle = UILabel()
         cellTitle.set(superview: cell, text: controlList[indexPath.row])
-        cellTitle.makeConstraints(left: 20, centerY: cell)
+        cellTitle.makeConstraints(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
         next.set(superview: cell, imageName: "discovery_next")
-        next.makeConstraints(right: 20, centerY: cell, width: 16, height: 16)
+        next.makeConstraints(right: 20, centerY: cell.centerY, width: 16, height: 16)
         
         return cell
     }

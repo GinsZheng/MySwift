@@ -40,16 +40,18 @@ class SimpleCalculator: UIViewController, UITextFieldDelegate {
         
         let equalSign = UILabel()
         view.addSubview(equalSign)
-        equalSign.makeConstraints(left: 255, centerY: numberB)
+        equalSign.makeConstraints(left: 255, top: numberB.y, width: 44, height: 44)
         equalSign.text = "="
         
         view.addSubview(result)
-        result.makeConstraints(left: 270, centerY: numberB)
         result.text = "result"
+        result.setFontStyle(color: "000", size: 17)
+        result.makeConstraints(left: 270, centerY: numberB.centerY, width: 100, height: 44)
+        result.backgroundColor = UIColor.red
         
         let calculationButton = UIButton(type: .system)
         view.addSubview(calculationButton)
-        calculationButton.makeConstraints(left: 20, top: 200, right: -20, height: 44)
+        calculationButton.makeConstraints(left: 20, top: 200, right: 20, height: 44)
         calculationButton.setTitle("Calculate", for: .normal)
         calculationButton.tintColor = UIColor.hex("fff")
         calculationButton.setBackgroundImage(getImageWithColor(color: "2c9eff"), for: .normal)
