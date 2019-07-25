@@ -13,6 +13,9 @@ let kScreenHeight = UIScreen.main.bounds.size.height
 let kScreenWidth = UIScreen.main.bounds.size.width
 let kStatusBarHeight = UIApplication.shared.statusBarFrame.size.height
 let kNavBarHeight = kStatusBarHeight + 44
-let kSeparatorHeight = 1 / UIScreen.main.scale
+let kHeightWithoutNavBar = kScreenHeight - kNavBarHeight
 
 let kCellHeight: CGFloat = 56
+let kSeparatorHeight = 1 / UIScreen.main.scale
+
+let kMyGod = 44

@@ -21,35 +21,35 @@ class SimpleCalculator: UIViewController, UITextFieldDelegate {
         view.backgroundColor = UIColor.white
         
         view.addSubview(numberA)
-        numberA.makeConstraintsToLeftTop(left: 20, top: 100, width: 80, height: 44)
+        numberA.makeConstraints(left: 20, top: 100, width: 80, height: 44)
         numberA.backgroundColor = UIColor.hex("f0f1f3")
         numberA.placeholder = "NumberA"
         numberA.delegate = self
         numberA.clearsOnInsertion = true
 
         view.addSubview(operate)
-        operate.makeConstraintsToLeftTop(left: 110, top: numberA, width: 50, height: numberA)
+        operate.makeConstraints(left: 110, top: numberA.y, width: 50, height: numberA.height)
         operate.backgroundColor = UIColor.hex("f0f1f3")
         operate.placeholder = "+-*/"
         
         view.addSubview(numberB)
-        numberB.makeConstraintsToLeftTop(left: 170, top: numberA, width: numberA, height: numberA)
+        numberB.makeConstraints(left: 170, top: numberA.y, width: numberA.width, height: numberA.height)
         numberB.backgroundColor = UIColor.hex("f0f1f3")
         numberB.placeholder = "NumberB"
         numberB.delegate = self
         
         let equalSign = UILabel()
         view.addSubview(equalSign)
-        equalSign.makeConstraintsToLeftCenterY(left: 255, centerY: numberB)
+        equalSign.makeConstraints(left: 255, centerY: numberB)
         equalSign.text = "="
         
         view.addSubview(result)
-        result.makeConstraintsToLeftCenterY(left: 270, centerY: numberB)
+        result.makeConstraints(left: 270, centerY: numberB)
         result.text = "result"
         
         let calculationButton = UIButton(type: .system)
         view.addSubview(calculationButton)
-        calculationButton.makeConstraintsToLeftTopRight(left: 20, top: 200, right: -20, height: 44)
+        calculationButton.makeConstraints(left: 20, top: 200, right: -20, height: 44)
         calculationButton.setTitle("Calculate", for: .normal)
         calculationButton.tintColor = UIColor.hex("fff")
         calculationButton.setBackgroundImage(getImageWithColor(color: "2c9eff"), for: .normal)
@@ -68,7 +68,7 @@ class SimpleCalculator: UIViewController, UITextFieldDelegate {
 
 
 
-
+// 计算逻辑
 public class Operation {
     public static func getResult(numberA: String, numberB: String, operate: String) -> String {
         var result = 0.0

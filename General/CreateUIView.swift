@@ -9,36 +9,36 @@
 import Foundation
 import UIKit
 
-//func createUIView(parentView: UIView) -> UIView {
+//func createUIView(superview: UIView) -> UIView {
 //    let myView = UIView()
 //    parentView.addSubview(myView)
 //    return myView
 //}
 
-//func createUILabel(parentView: UIView, text: String) -> UILabel {
+//func createUILabel(superview: UIView, text: String) -> UILabel {
 //    let myLabel = UILabel()
 //    myLabel.text = text
 //    parentView.addSubview(myLabel)
 //    return myLabel
 //}
 
-func createUIImageView(parentView: UIView, imageName: String) -> UIImageView {
+func createUIImageView(superview: UIView, imageName: String) -> UIImageView {
     let myImageView = UIImageView()
     myImageView.image = UIImage(named: imageName)
-    parentView.addSubview(myImageView)
+    superview.addSubview(myImageView)
     return myImageView
 }
 
-func createUIButton(parentView: UIView, type: UIButton.ButtonType) -> UIButton {
+func createUIButton(superview: UIView, type: UIButton.ButtonType) -> UIButton {
     let myButton = UIButton(type: type)
-    parentView.addSubview(myButton)
+    superview.addSubview(myButton)
     return myButton
 }
 
-func createUITextField(parentView: UIView, placeholder: String) -> UITextField {
+func createUITextField(superview: UIView, placeholder: String) -> UITextField {
     let myTextField = UITextField()
     myTextField.placeholder = placeholder
-    parentView.addSubview(myTextField)
+    superview.addSubview(myTextField)
     return myTextField
 }
 

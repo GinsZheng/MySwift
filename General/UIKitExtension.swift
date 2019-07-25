@@ -11,8 +11,8 @@ import UIKit
 
 extension UIView {
     
-    func set(parentView: UIView) {
-        parentView.addSubview(self)
+    func set(superview: UIView) {
+        superview.addSubview(self)
     }
     
     func addShadow(color: String, x: CGFloat, y: CGFloat, radius: CGFloat) {
@@ -38,6 +38,10 @@ extension UIView {
         maskLayer.frame = self.bounds
         maskLayer.path = maskPath.cgPath
         self.layer.mask = maskLayer
+    }
+    
+    func setBackgroundColor(color: String) {
+        self.backgroundColor = UIColor.hex(color)
     }
     
     var x: CGFloat {
@@ -122,9 +126,9 @@ extension UIView {
 
 extension UILabel {
     
-    func set(parentView: UIView, text: String) {
+    func set(superview: UIView, text: String) {
         self.text = text
-        parentView.addSubview(self)
+        superview.addSubview(self)
     }
     
     func setFontStyle(color: String, size: CGFloat, weight: UIFont.Weight = UIFont.Weight.regular) {
@@ -162,9 +166,9 @@ extension UILabel {
 
 extension UITextView {
     
-    func set(parentView: UIView, text: String) {
+    func set(superview: UIView, text: String) {
         self.text = text
-        parentView.addSubview(self)
+        superview.addSubview(self)
     }
     
     func setFontStyle(color: String, size: CGFloat, weight: UIFont.Weight = UIFont.Weight.regular) {
@@ -185,9 +189,9 @@ extension UITextView {
 
 extension UITextField {
     
-    func set(parentView: UIView, placeholder: String) {
+    func set(superview: UIView, placeholder: String) {
         self.placeholder = placeholder
-        parentView.addSubview(self)
+        superview.addSubview(self)
     }
 }
 
@@ -195,9 +199,9 @@ extension UITextField {
 
 extension UIImageView {
     
-    func set(parentView: UIView, imageName: String) {
+    func set(superview: UIView, imageName: String) {
         self.image = UIImage(named: imageName)
-        parentView.addSubview(self)
+        superview.addSubview(self)
     }
 }
 
@@ -232,8 +236,16 @@ extension UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    func getTabBarHeight() -> CGFloat {
+        return self.tabBarController?.tabBar.bounds.size.height ?? 0
+    }
     
-    
+    func getSafeAreaHeight() -> CGFloat {
+        return kScreenHeight - kNavBarHeight - self.getTabBarHeight()
+    }
 }
+
+
+
 
 

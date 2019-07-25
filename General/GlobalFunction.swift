@@ -20,11 +20,4 @@ func getImageWithColor(color: String) -> UIImage {
     return image!
 }
 
-func getTabBarHeight(_ ofViewControlor: UIViewController) -> CGFloat {
-    return ofViewControlor.tabBarController?.tabBar.bounds.size.height ?? 0
-}
-
-func getSafeAreaHeight(_ ofViewControlor: UIViewController) -> CGFloat {
-    return kScreenHeight - kNavBarHeight - getTabBarHeight(ofViewControlor)
-}
 

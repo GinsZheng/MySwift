@@ -15,14 +15,14 @@ class Calculator: UIViewController {
         view.backgroundColor = UIColor.white
         
         let number = UIButton()
-        number.set(parentView: view)
+        number.set(superview: view)
         number.setBackgroundImage(getImageWithColor(color: color2C9EFF), for: .normal)
         
-        number.makeConstraintsToLeftBottom(left: 16, bottom: -16, width: 75, height: 75)
+        number.makeConstraints(left: 16, bottom: -16, width: 75, height: 75)
         
         
         let image = UIImageView(frame: CGRect(x: 20, y: 100, width: 100, height: 100))
-        image.set(parentView: view)
+        image.set(superview: view)
 //        image.makeConstraintsToLeftTop(left: 20, top: 100, width: 100, height: 100)
         image.backgroundColor = UIColor.hex(color2C9EFF)
 //        image.setCornerRadius(CGFloat(image.snp.width)/2)
