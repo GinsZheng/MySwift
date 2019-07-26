@@ -23,7 +23,6 @@
 		7A66D56B22A038A0006BDBC7 /* MakeConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66D56A22A038A0006BDBC7 /* MakeConstraints.swift */; };
 		7A66D58322A406BC006BDBC7 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66D58222A406BC006BDBC7 /* GlobalVariables.swift */; };
 		7A66D58D22A4297E006BDBC7 /* UIkitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66D58C22A4297E006BDBC7 /* UIkitExtension.swift */; };
-		7A7153EE22A6B5E7004C295E /* CreateUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7153ED22A6B5E7004C295E /* CreateUIView.swift */; };
 		7A8C437622E9E2FB0037354C /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C437422E9E2FB0037354C /* TestPage.swift */; };
 		7A8C437722E9E2FB0037354C /* GeneralSubpage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C437522E9E2FB0037354C /* GeneralSubpage.swift */; };
 		7AA63B1A22E36AD100EAA214 /* ModelTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63AFF22E36AD000EAA214 /* ModelTab.swift */; };
@@ -222,7 +221,6 @@
 		7A66D56A22A038A0006BDBC7 /* MakeConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeConstraints.swift; sourceTree = "<group>"; };
 		7A66D58222A406BC006BDBC7 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		7A66D58C22A4297E006BDBC7 /* UIkitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIkitExtension.swift; sourceTree = "<group>"; };
-		7A7153ED22A6B5E7004C295E /* CreateUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUIView.swift; sourceTree = "<group>"; };
 		7A8C437422E9E2FB0037354C /* TestPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
 		7A8C437522E9E2FB0037354C /* GeneralSubpage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSubpage.swift; sourceTree = "<group>"; };
 		7AA63AFF22E36AD000EAA214 /* ModelTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTab.swift; sourceTree = "<group>"; };
@@ -375,7 +373,6 @@
 				7A66D53422A02CD2006BDBC7 /* SetColorInHex.swift */,
 				7A66D58222A406BC006BDBC7 /* GlobalVariables.swift */,
 				7AB9252322A6AD9800C35AD5 /* GlobalFunction.swift */,
-				7A7153ED22A6B5E7004C295E /* CreateUIView.swift */,
 				7A66D56A22A038A0006BDBC7 /* MakeConstraints.swift */,
 				7A66D58C22A4297E006BDBC7 /* UIkitExtension.swift */,
 				7AA63B3222E36B6000EAA214 /* Colors.swift */,
@@ -676,7 +673,6 @@
 				7A66D58D22A4297E006BDBC7 /* UIkitExtension.swift in Sources */,
 				7A66D58322A406BC006BDBC7 /* GlobalVariables.swift in Sources */,
 				7AA63B1B22E36AD100EAA214 /* FirstTab.swift in Sources */,
-				7A7153EE22A6B5E7004C295E /* CreateUIView.swift in Sources */,
 				7A8C437722E9E2FB0037354C /* GeneralSubpage.swift in Sources */,
 				7AB9252422A6AD9800C35AD5 /* GlobalFunction.swift in Sources */,
 				7A66D56B22A038A0006BDBC7 /* MakeConstraints.swift in Sources */,
