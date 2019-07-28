@@ -47,7 +47,6 @@ class SimpleCalculator: UIViewController, UITextFieldDelegate {
         result.text = "result"
         result.setFontStyle(color: "000", size: 17)
         result.makeConstraints(left: 270, centerY: numberB.centerY, width: 100, height: 44)
-        result.backgroundColor = UIColor.red
         
         let calculationButton = UIButton(type: .system)
         view.addSubview(calculationButton)
@@ -82,10 +81,12 @@ public class Operation {
             result = numberA + numberB
         case "-":
             result = numberA - numberB
-        case "*":
+        case "×":
             result = numberA * numberB
-        case "/":
+        case "÷":
             result = numberA / numberB
+        case "^":
+            result = pow(numberA, numberB)
         default:
             result = 0
         }

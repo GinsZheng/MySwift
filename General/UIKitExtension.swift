@@ -246,6 +246,13 @@ extension UIViewController {
 }
 
 
-
-
+extension String {
+    func removeFirstCharacter() -> String {
+        return String(self[self.index(after: self.startIndex)...])
+    }
+    
+    func removeFrontCharacters(length: Int) -> String {
+        return String(self[self.index(self.startIndex, offsetBy: length-1)])
+    }
+}
 

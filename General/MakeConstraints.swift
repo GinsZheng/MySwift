@@ -117,7 +117,6 @@ extension UIView {
     }
     
     
-    
     // 常用其他约束
     func makeConstraints(left: CGFloat, top: CGFloat, right: CGFloat, bottom: CGFloat) {
         self.frame.origin.x = left
@@ -143,3 +142,86 @@ extension UIView {
 
 }
 
+
+
+// 按比例布局
+extension UIView {
+    func factorConstraints(left: CGFloat, top: CGFloat, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: f(width), height: f(height))
+        self.frame.origin.x = f(left)
+        self.frame.origin.y = f(top)
+    }
+
+    func factorConstraints(left: CGFloat, centerY: CGFloat, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: f(width), height: f(height))
+        self.frame.origin.x = f(left)
+        self.centerY = f(centerY)
+    }
+
+    func factorConstraints(left: CGFloat, bottom: CGFloat, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: f(width), height: f(height))
+        self.frame.origin.x = f(left)
+        self.frame.origin.y = f(self.superview!.height) - f(self.height) - f(bottom)
+    }
+
+    func factorConstraints(centerX: CGFloat, top: CGFloat, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: f(width), height: f(height))
+        self.centerX = f(centerX)
+        self.frame.origin.y = f(top)
+    }
+
+    func factorConstraints(center: UIView, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: f(width), height: f(height))
+        self.frame.origin.x = (f(center.width) - f(self.width)) / 2
+        self.frame.origin.y = (f(center.height) - f(self.height)) / 2
+    }
+
+    func factorConstraints(centerX: CGFloat, bottom: CGFloat, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: f(width), height: f(height))
+        self.centerX = f(centerX)
+        self.frame.origin.y = f(self.superview!.height) - f(self.height) - f(bottom)
+    }
+
+    func factorConstraints(right: CGFloat, top: CGFloat, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: f(width), height: f(height))
+        self.frame.origin.x = f(self.superview!.width) - f(self.width) - f(right)
+        self.frame.origin.y = f(top)
+    }
+
+    func factorConstraints(right: CGFloat, centerY: CGFloat, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: f(width), height: f(height))
+        self.frame.origin.x = f(self.superview!.width) - f(self.width) - f(right)
+        self.centerY = f(centerY)
+    }
+
+    func factorConstraints(right: CGFloat, bottom: CGFloat, width: CGFloat, height:CGFloat) {
+        self.frame.size = CGSize(width: f(width), height: f(height))
+        self.frame.origin.x = f(self.superview!.width) - f(self.width) - f(right)
+        self.frame.origin.y = f(self.superview!.height) - f(self.height) - f(bottom)
+    }
+
+
+    // 常用其他约束
+    func factorConstraints(left: CGFloat, top: CGFloat, right: CGFloat, bottom: CGFloat) {
+        self.frame.origin.x = f(left)
+        self.frame.origin.y = f(top)
+        self.frame.size.width = f(self.superview!.width) - f(left) - f(right)
+        self.frame.size.height = f(self.superview!.height) - f(top) - f(bottom)
+    }
+
+    func factorConstraints(allEdges: CGFloat) {
+        self.frame.origin.x = f(allEdges)
+        self.frame.origin.y = f(allEdges)
+        self.frame.size.width = f(self.superview!.width) - f(allEdges)*2
+        self.frame.size.height = f(self.superview!.height) - f(allEdges)*2
+    }
+
+    func factorConstraints(left: CGFloat, top: CGFloat, right: CGFloat, height: CGFloat) {
+        self.frame.origin.x = f(left)
+        self.frame.origin.y = f(top)
+        self.frame.size.width = f(self.superview!.width) - f(left) - f(right)
+        self.frame.size.height = f(height)
+    }
+
+
+}
