@@ -60,7 +60,7 @@ class SimpleCalculator: UIViewController, UITextFieldDelegate {
     
 
     @objc func calculating() {
-        result.text = Operation.getResult(numberA: numberA.text ?? "", numberB: numberB.text ?? "", operate: operate.text ?? "")
+        result.text = Operation.getResult(numberA: numberA.text ?? "", numberB: numberB.text ?? "", operateSign: operate.text ?? "")
     }
     
     
@@ -71,12 +71,12 @@ class SimpleCalculator: UIViewController, UITextFieldDelegate {
 
 // 计算逻辑
 public class Operation {
-    public static func getResult(numberA: String, numberB: String, operate: String) -> String {
+    public static func getResult(numberA: String, numberB: String, operateSign: String) -> String {
         var result = 0.0
         let numberA = Double(numberA) ?? 0
         let numberB = Double(numberB) ?? 0
         
-        switch operate {
+        switch operateSign {
         case "+":
             result = numberA + numberB
         case "-":
@@ -92,5 +92,16 @@ public class Operation {
         }
         
         return String(result)
+    }
+    
+    public static func getOppositeNumber(number: String) -> String {
+        var oppositeNumber = ""
+        if number.contains("-") {
+            oppositeNumber = number.removeFirstCharacter()
+        } else {
+            oppositeNumber = "-" + number
+        }
+        
+        return oppositeNumber
     }
 }

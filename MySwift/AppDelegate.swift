@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 创建 tabBar 实例
         let firstTab = FirstTab()
         let secondTab = SecondTab()
-        let modelTab = ModelTab()
+        let modelTab = ThirdTab()
         let forthTab = TestTab()
         
         // 创建导航控制器

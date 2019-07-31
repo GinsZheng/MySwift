@@ -10,39 +10,41 @@ import UIKit
 
 class Calculator: UIViewController {
     
-    let numberScreen = UILabel()
+    let number1 = Numbers()
+    let number2 = Numbers()
+    let number3 = Numbers()
+    let number4 = Numbers()
+    let number5 = Numbers()
+    let number6 = Numbers()
+    let number7 = Numbers()
+    let number8 = Numbers()
+    let number9 = Numbers()
+    let number0 = Numbers()
+    let dot = Numbers()
     
-    let number1 = UIButton()
-    let number2 = UIButton()
-    let number3 = UIButton()
-    let number4 = UIButton()
-    let number5 = UIButton()
-    let number6 = UIButton()
-    let number7 = UIButton()
-    let number8 = UIButton()
-    let number9 = UIButton()
-    let number0 = UIButton()
-    let numberDot = UIButton()
-    
-    let equalSign = UIButton()
-    let plusSign = UIButton()
-    let minusSign = UIButton()
-    let timesSign = UIButton()
-    let divisionSign = UIButton()
-    let powerSign = UIButton()
-    
+    let equalSign = OperateSigns()
+    let plusSign = OperateSigns()
+    let minusSign = OperateSigns()
+    let timesSign = OperateSigns()
+    let divisionSign = OperateSigns()
+    let powerSign = OperateSigns()
     
     let ac = UIButton()
     let switchSign = UIButton()
     
-    var currentOperateSign = ""
-    var currentNumber = ""
-    var numberA = ""
-    var numberB = ""
-    var storeNumber = ""
     
-    var operaterSignPressed = false
-    var switchSignPressed = false
+    let numberScreen = UILabel()
+    
+    var numberA = "0"
+    var numberB = "0"
+    var storedNumberB = ""
+    var currentOperateSign = ""
+    var result = ""
+
+    var operaterSignInputted = false
+    var numberBInputted = false
+    var dotInputted = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,12 +97,12 @@ class Calculator: UIViewController {
         number0.setNumberStyle(text: "0", self, selector: #selector(inputNumber(_:)))
         number0.titleEdgeInsets = UIEdgeInsets(top: 13, left: 27, bottom: 13, right: 115)
         
-        numberDot.set(superview: view)
-        numberDot.makeConstraints(left: 194, bottom: 16 + kSafeAreaInsets.bottom, width: 75, height: 75)
-        numberDot.setNumberStyle(text: ".", self, selector: #selector(inputNumber(_:)))
+        dot.set(superview: view)
+        dot.makeConstraints(left: 194, bottom: 16 + kSafeAreaInsets.bottom, width: 75, height: 75)
+        dot.setNumberStyle(text: ".", self, selector: #selector(inputNumber(_:)))
         
         
-        equalSign.setOperateSignStyle(text: "=", self, selector: #selector(inputEqualSign))
+        equalSign.setOperateSignStyle(text: "=", self, selector: #selector(pressEqualSign))
         equalSign.set(superview: view)
         equalSign.makeConstraints(right: 16, bottom: 16 + kSafeAreaInsets.bottom, width: 75, height: 75)
         
@@ -120,7 +122,16 @@ class Calculator: UIViewController {
         divisionSign.set(superview: view)
         divisionSign.makeConstraints(right: 16, bottom: 372 + kSafeAreaInsets.bottom, width: 75, height: 75)
         
-        powerSign.setOperateSignStyle(text: "^", self, selector: #selector(inputOperateSign(_:)))
+        powerSign.setBackgroundImage(getImageWithColor(color: color212C9EFF), for: .normal)
+        powerSign.setBackgroundImage(getImageWithColor(color: color3B2C9EFF), for: .highlighted)
+        powerSign.setBackgroundImage(getImageWithColor(color: color333), for: .selected)
+        powerSign.setCornerRadius(radius: 75/2)
+        powerSign.setTitle("^", for: .normal)
+        powerSign.setTitleColor(UIColor.hex(color222), for: .normal)
+        powerSign.setTitleColor(UIColor.hex(colorFFF), for: .selected)
+        powerSign.titleLabel?.font = UIFont.systemFont(ofSize: 35)
+        powerSign.addTarget(target, action: #selector(inputOperateSign(_:)), for: .touchUpInside)
+        powerSign.titleEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 16, right: 10)
         powerSign.set(superview: view)
         powerSign.makeConstraints(left: 194, bottom: 372 + kSafeAreaInsets.bottom, width: 75, height: 75)
         
@@ -133,87 +144,135 @@ class Calculator: UIViewController {
         switchSign.set(superview: view)
         switchSign.makeConstraints(left: 105, bottom: 372 + kSafeAreaInsets.bottom, width: 75, height: 75)
         
-        
-        
     }
     
     
     @objc func inputNumber(_ number: UIButton) {
-        if currentNumber == "0" && number.title(for: .normal) != "." {
-            numberScreen.text! = ""
-            print("ya")
-        }
-        if operaterSignPressed == false {
-            currentNumber += number.title(for: .normal)!
-            numberScreen.text! = currentNumber
-            numberA = currentNumber
-            print(currentNumber)
+        
+        if operaterSignInputted == false {
+            
+            result = ""
+            
+            if number.title(for: .normal) == "." && operaterSignInputted == false {
+                operaterSignInputted = true
+            }
+            
+            if number.title(for: .normal) == "." && (numberA == "0") {
+                numberA = "0"
+            } else if numberA == "0" {
+                numberA = ""
+            }
+            
+            if (numberA.contains(".") && numberA.count <= 9) || (!numberA.contains(".") && numberA.count <= 8) {
+                numberA += number.title(for: .normal)!
+                numberScreen.text! = numberA
+            }
         } else {
-            currentNumber += number.title(for: .normal)!
-            numberScreen.text! = currentNumber
-            numberB = currentNumber
-            storeNumber = numberB
-            print(currentNumber)
+            numberBInputted = true
+            
+            if number.title(for: .normal) == "." {
+                number.isEnabled = false
+            }
+            
+            if number.title(for: .normal) == "." && (numberB == "0") {
+                numberB = "0"
+            } else if numberB == "0" {
+                numberB = ""
+            }
+            
+            if (numberB.contains(".") && numberB.count <= 9) || (!numberB.contains(".") && numberB.count <= 8) {
+                numberB += number.title(for: .normal)!
+                numberScreen.text! = numberB
+            }
         }
         
     }
     
     @objc func inputOperateSign(_ operateSign: UIButton) {
-        currentOperateSign = operateSign.title(for: .normal)!
-        operaterSignPressed = true
-        
-        if numberB == "" {
-            currentNumber = ""
-            print("operaterSignPressed == true")
-        } else {
-//            let result = Operation.getResult(numberA: numberA, numberB: numberB, operate: currentOperateSign)
-            inputEqualSign()
-            operaterSignPressed = true
+        if result != "" {
+            numberA = result
+        }
 
-            print("get result with operation sign")
-            
+        if numberBInputted == true {
+            pressEqualSign()
+            numberA = result
         }
         
+        result = ""
+        currentOperateSign = operateSign.title(for: .normal)!
+        operaterSignInputted = true
+        dotInputted = false
+        
+        self.deselectAllOperateSign()
+        operateSign.isSelected = true
     }
+
+    @objc func pressEqualSign() {
+        
+        if currentOperateSign == "" {
+            return
+        }
     
-    @objc func inputEqualSign() {
-        if numberB == "" {
-            numberB = storeNumber
+        if result == "" && numberBInputted == false {
+            numberB = numberA
         }
         
-        let result = Operation.getResult(numberA: numberA, numberB: numberB, operate: currentOperateSign)
-        operaterSignPressed = false
+        if result != "" && numberBInputted == false {
+            numberB = storedNumberB
+        }
+        
+        if result != "" {
+            numberA = result
+        }
+        
+        result = Operation.getResult(numberA: numberA, numberB: numberB, operateSign: currentOperateSign)
         numberScreen.text! = result
-        numberA = result
-        numberB = ""
-        currentNumber = ""
+        
+        numberA = "0"
+        storedNumberB = numberB
+        numberB = "0"
+        operaterSignInputted = false
+        numberBInputted = false
+        dotInputted = false
+        
+        self.deselectAllOperateSign()
         
     }
     
     @objc func inputAC() {
-        numberScreen.text! = "0"
+        numberA = "0"
+        numberB = "0"
         currentOperateSign = ""
-        currentNumber = ""
-        numberA = ""
-        numberB = ""
-        storeNumber = ""
+        result = ""
+        numberScreen.text! = "0"
         
-        operaterSignPressed = false
-        switchSignPressed = false
+        operaterSignInputted = false
+        numberBInputted = false
+        
     }
     
     @objc func inputSwitchSign() {
-        if switchSignPressed == false {
-            currentNumber = "-" + currentNumber
-            numberScreen.text! = currentNumber
-            switchSignPressed = true
-            print("heheda")
-        } else {
-            currentNumber = String(currentNumber[currentNumber.index(after: currentNumber.startIndex)...])
-            numberScreen.text! = currentNumber
-            print(currentNumber)
-            switchSignPressed = false
+        
+        if result != "" {
+            result = Operation.getOppositeNumber(number: result)
+            numberScreen.text! = result
+        } else if operaterSignInputted == false {
+            numberA = Operation.getOppositeNumber(number: numberA)
+            numberScreen.text! = numberA
+        } else if operaterSignInputted == true {
+            numberB = Operation.getOppositeNumber(number: numberB)
+            numberScreen.text! = numberB
         }
+        
+    }
+    
+    
+    func deselectAllOperateSign() {
+        plusSign.isSelected = false
+        minusSign.isSelected = false
+        timesSign.isSelected = false
+        divisionSign.isSelected = false
+        powerSign.isSelected = false
     }
 
 }
@@ -233,6 +292,7 @@ extension UIButton {
     func setOperateSignStyle(text: String, _ target: Any?, selector: Selector) {
         self.setBackgroundImage(getImageWithColor(color: color2C9EFF), for: .normal)
         self.setBackgroundImage(getImageWithColor(color: color278DE5), for: .highlighted)
+        self.setBackgroundImage(getImageWithColor(color: color333), for: .selected)
         self.setCornerRadius(radius: 75/2)
         self.setTitle(text, for: .normal)
         self.setTitleColor(UIColor.hex(colorFFF), for: .normal)
@@ -253,4 +313,16 @@ extension UIButton {
     }
 }
 
+class Numbers: UIButton {
+    
+}
+
+class OperateSigns: UIButton {
+    
+    var newbee = "newbee"
+    static func setAsDeseleted() {
+        self.init().isSelected = false
+        print("init?")
+    }
+}
 
