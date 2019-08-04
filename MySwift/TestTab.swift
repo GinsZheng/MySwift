@@ -21,6 +21,7 @@ class TestTab: UIViewController {
         myView.backgroundColor = UIColor.hex("2c9eff")
         print(kSafeAreaInsets.bottom)
         
+        
     }
 
 }

@@ -31,9 +31,8 @@ class Calculator: UIViewController {
     
     let ac = UIButton()
     let switchSign = UIButton()
-    
-    
     let numberScreen = UILabel()
+    
     
     var numberA = "0"
     var numberB = "0"
@@ -43,7 +42,6 @@ class Calculator: UIViewController {
 
     var operaterSignInputted = false
     var numberBInputted = false
-    var dotInputted = false
     
     
     override func viewDidLoad() {
@@ -54,6 +52,8 @@ class Calculator: UIViewController {
         numberScreen.textAlignment = .right
         numberScreen.set(superview: view, text: "0")
         numberScreen.makeConstraints(right: 25, bottom: 449 + kSafeAreaInsets.bottom, width: kScreenWidth - 50, height: 126)
+        numberScreen.adjustsFontSizeToFitWidth = true
+        numberScreen.minimumScaleFactor = 0.2
         
         
         number1.set(superview: view)
@@ -153,36 +153,41 @@ class Calculator: UIViewController {
             
             result = ""
             
-            if number.title(for: .normal) == "." && operaterSignInputted == false {
-                operaterSignInputted = true
+            if number.title(for: .normal) == "." && numberA.contains(".") {
+                return
             }
             
             if number.title(for: .normal) == "." && (numberA == "0") {
                 numberA = "0"
+            } else if number.title(for: .normal) == "." && (numberA == "-0") {
+                numberA = "-0"
             } else if numberA == "0" {
                 numberA = ""
+            } else if numberA == "-0" {
+                numberA = "-"
             }
             
             if (numberA.contains(".") && numberA.count <= 9) || (!numberA.contains(".") && numberA.count <= 8) {
                 numberA += number.title(for: .normal)!
-                numberScreen.text! = numberA
+                numberScreen.text! = formatNumber(value: numberA)
             }
         } else {
             numberBInputted = true
+            self.deselectAllOperateSign()
             
-            if number.title(for: .normal) == "." {
-                number.isEnabled = false
+            if number.title(for: .normal) == "." && numberB.contains(".") {
+                return
             }
             
-            if number.title(for: .normal) == "." && (numberB == "0") {
+            if number.title(for: .normal) == "." && (numberB == "0" || numberB == "-0") {
                 numberB = "0"
-            } else if numberB == "0" {
+            } else if numberB == "0" || numberB == "-0" {
                 numberB = ""
             }
             
             if (numberB.contains(".") && numberB.count <= 9) || (!numberB.contains(".") && numberB.count <= 8) {
                 numberB += number.title(for: .normal)!
-                numberScreen.text! = numberB
+                numberScreen.text! = formatNumber(value: numberB)
             }
         }
         
@@ -201,7 +206,6 @@ class Calculator: UIViewController {
         result = ""
         currentOperateSign = operateSign.title(for: .normal)!
         operaterSignInputted = true
-        dotInputted = false
         
         self.deselectAllOperateSign()
         operateSign.isSelected = true
@@ -217,6 +221,10 @@ class Calculator: UIViewController {
             numberB = numberA
         }
         
+        if numberBInputted == true {
+            storedNumberB = numberB
+        }
+        
         if result != "" && numberBInputted == false {
             numberB = storedNumberB
         }
@@ -226,16 +234,27 @@ class Calculator: UIViewController {
         }
         
         result = Operation.getResult(numberA: numberA, numberB: numberB, operateSign: currentOperateSign)
-        numberScreen.text! = result
+        
+        if formatNumber(value: result) == formatNumber(value: numberB) {
+            UIView.animate(withDuration: 0.2, delay: 0, options: [.autoreverse], animations: {
+                self.numberScreen.alpha = 0
+            }) { (_) in
+                self.numberScreen.alpha = 1
+            }
+        }
+        
+        numberScreen.text! = formatNumber(value: result)
+        
         
         numberA = "0"
         storedNumberB = numberB
         numberB = "0"
         operaterSignInputted = false
         numberBInputted = false
-        dotInputted = false
         
         self.deselectAllOperateSign()
+        
+        
         
     }
     
@@ -248,20 +267,19 @@ class Calculator: UIViewController {
         
         operaterSignInputted = false
         numberBInputted = false
-        
     }
     
     @objc func inputSwitchSign() {
         
         if result != "" {
             result = Operation.getOppositeNumber(number: result)
-            numberScreen.text! = result
+            numberScreen.text! = formatNumber(value: result)
         } else if operaterSignInputted == false {
             numberA = Operation.getOppositeNumber(number: numberA)
-            numberScreen.text! = numberA
+            numberScreen.text! = formatNumber(value: numberA)
         } else if operaterSignInputted == true {
             numberB = Operation.getOppositeNumber(number: numberB)
-            numberScreen.text! = numberB
+            numberScreen.text! = formatNumber(value: numberB)
         }
         
     }
@@ -274,7 +292,67 @@ class Calculator: UIViewController {
         divisionSign.isSelected = false
         powerSign.isSelected = false
     }
+    
+    func formatNumber(value: String) -> String {
+        if value == "inf" || value == "-inf" {
+            return "Oops, bummer"
+        }
+        
+        if value.isEmpty {
+            return "0"
+        }
+        
+        if value == "0" || value == "-0" {
+            return value
+        }
+        
+        let pattern = "^-?0\\.0{0,8}$"
+        let regex = try! NSRegularExpression(pattern: pattern)
+        let resultNum = regex.numberOfMatches(in: value, range: NSRange(location: 0, length: value.count))
+        
+        if resultNum >= 1 {
+            return value
+        }
+        
+        let numberFormatter = NumberFormatter()
+        let valueOfDouble = (value as NSString).doubleValue // 把String转换为Double
+        
+        
+        
+        if (valueOfDouble >= -pow(10, -100) && valueOfDouble <= pow(10, -100)) || (valueOfDouble <= -pow(10, 100) || valueOfDouble >= pow(10, 100)) {
+            numberFormatter.numberStyle = .scientific
+            numberFormatter.maximumSignificantDigits = 5
+        } else if (valueOfDouble >= -pow(10, -10) && valueOfDouble <= pow(10, -10)) || (valueOfDouble <= -pow(10, 10) || valueOfDouble > pow(10, 10)) {
+            numberFormatter.numberStyle = .scientific
+            numberFormatter.maximumSignificantDigits = 6
+        } else if (valueOfDouble > -pow(10, -8) && valueOfDouble < pow(10, -8)) || (valueOfDouble < -pow(10, 9) || valueOfDouble > pow(10, 9)) {
+            numberFormatter.numberStyle = .scientific
+            numberFormatter.maximumSignificantDigits = 7
+        } else {
+            numberFormatter.numberStyle = .decimal
+            numberFormatter.maximumFractionDigits = 8
+        }
 
+        
+        let formatValue = numberFormatter.string(from: NSNumber(value: valueOfDouble))!.lowercased()
+        
+        return formatValue
+    }
+    
+    @objc func longPressAction() {
+        let number = numberScreen.text
+        print(number)
+    }
+    
+    class Numbers: UIButton {
+        
+    }
+    
+    class OperateSigns: UIButton {
+        
+    }
+    
+    
 }
 
 
@@ -297,7 +375,7 @@ extension UIButton {
         self.setTitle(text, for: .normal)
         self.setTitleColor(UIColor.hex(colorFFF), for: .normal)
         self.setTitleColor(UIColor.hex(colorEEE), for: .highlighted)
-        self.titleLabel?.font = UIFont.systemFont(ofSize: 35)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 38)
         self.addTarget(target, action: selector, for: .touchUpInside)
         self.titleEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 16, right: 10)
     }
@@ -311,18 +389,6 @@ extension UIButton {
         self.addTarget(target, action: selector, for: .touchUpInside)
         self.titleEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 16, right: 10)
     }
-}
-
-class Numbers: UIButton {
     
-}
-
-class OperateSigns: UIButton {
-    
-    var newbee = "newbee"
-    static func setAsDeseleted() {
-        self.init().isSelected = false
-        print("init?")
-    }
 }
 

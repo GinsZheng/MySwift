@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A019C4422AEA0100034C5A3 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A019C4122AE9FF80034C5A3 /* SnapKit.framework */; };
-		7A019C4522AEA0100034C5A3 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A019C4122AE9FF80034C5A3 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A019C4822AEA0100034C5A3 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A019C2E22AE9FF40034C5A3 /* SwiftyJSON.framework */; };
 		7A019C4922AEA0100034C5A3 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A019C2E22AE9FF40034C5A3 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A019C4C22AEA0100034C5A3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A019C1522AE9FED0034C5A3 /* Alamofire.framework */; };
@@ -23,7 +21,6 @@
 		7A66D56B22A038A0006BDBC7 /* MakeConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66D56A22A038A0006BDBC7 /* MakeConstraints.swift */; };
 		7A66D58322A406BC006BDBC7 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66D58222A406BC006BDBC7 /* GlobalVariables.swift */; };
 		7A66D58D22A4297E006BDBC7 /* UIkitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66D58C22A4297E006BDBC7 /* UIkitExtension.swift */; };
-		7A89655B22EF36D7002A2479 /* CloudCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A89655A22EF36D7002A2479 /* CloudCalculator.swift */; };
 		7A8C437622E9E2FB0037354C /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C437422E9E2FB0037354C /* TestPage.swift */; };
 		7A8C437722E9E2FB0037354C /* GeneralSubpage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C437522E9E2FB0037354C /* GeneralSubpage.swift */; };
 		7AA63B1A22E36AD100EAA214 /* ThirdTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63AFF22E36AD000EAA214 /* ThirdTab.swift */; };
@@ -135,27 +132,6 @@
 			remoteGlobalIDString = A8580F741BCF5C5B00DA927B;
 			remoteInfo = "SwiftyJSON tvOS Tests";
 		};
-		7A019C4022AE9FF80034C5A3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7A019C3B22AE9FF70034C5A3 /* SnapKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EEBCC9D819CC627D0083B827;
-			remoteInfo = SnapKit;
-		};
-		7A019C4222AE9FF80034C5A3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7A019C3B22AE9FF70034C5A3 /* SnapKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EEBCC9E219CC627E0083B827;
-			remoteInfo = "SnapKit Tests";
-		};
-		7A019C4622AEA0100034C5A3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7A019C3B22AE9FF70034C5A3 /* SnapKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = EEBCC9D719CC627D0083B827;
-			remoteInfo = SnapKit;
-		};
 		7A019C4A22AEA0100034C5A3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7A019C2222AE9FF40034C5A3 /* SwiftyJSON.xcodeproj */;
@@ -195,7 +171,6 @@
 			files = (
 				7A019C4922AEA0100034C5A3 /* SwiftyJSON.framework in Embed Frameworks */,
 				7A019C4D22AEA0100034C5A3 /* Alamofire.framework in Embed Frameworks */,
-				7A019C4522AEA0100034C5A3 /* SnapKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,7 +180,6 @@
 /* Begin PBXFileReference section */
 		7A019C0922AE9FED0034C5A3 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../../SwiftKit/Library/Alamofire-alamofire5/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		7A019C2222AE9FF40034C5A3 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = "../../SwiftKit/Library/SwiftyJSON-master/SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
-		7A019C3B22AE9FF70034C5A3 /* SnapKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SnapKit.xcodeproj; path = "../../SwiftKit/Library/SnapKit-develop/SnapKit.xcodeproj"; sourceTree = "<group>"; };
 		7A66D4C622A028C8006BDBC7 /* MySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A66D4C922A028C8006BDBC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A66D4CE22A028C8006BDBC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -222,7 +196,6 @@
 		7A66D56A22A038A0006BDBC7 /* MakeConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeConstraints.swift; sourceTree = "<group>"; };
 		7A66D58222A406BC006BDBC7 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		7A66D58C22A4297E006BDBC7 /* UIkitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIkitExtension.swift; sourceTree = "<group>"; };
-		7A89655A22EF36D7002A2479 /* CloudCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudCalculator.swift; sourceTree = "<group>"; };
 		7A8C437422E9E2FB0037354C /* TestPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
 		7A8C437522E9E2FB0037354C /* GeneralSubpage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSubpage.swift; sourceTree = "<group>"; };
 		7AA63AFF22E36AD000EAA214 /* ThirdTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdTab.swift; sourceTree = "<group>"; };
@@ -242,7 +215,6 @@
 			files = (
 				7A019C4822AEA0100034C5A3 /* SwiftyJSON.framework in Frameworks */,
 				7A019C4C22AEA0100034C5A3 /* Alamofire.framework in Frameworks */,
-				7A019C4422AEA0100034C5A3 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,15 +259,6 @@
 				7A019C3622AE9FF40034C5A3 /* SwiftyJSON.framework */,
 				7A019C3822AE9FF40034C5A3 /* SwiftyJSON.framework */,
 				7A019C3A22AE9FF40034C5A3 /* SwiftyJSON tvOS Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		7A019C3C22AE9FF70034C5A3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7A019C4122AE9FF80034C5A3 /* SnapKit.framework */,
-				7A019C4322AE9FF80034C5A3 /* SnapKit Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -362,7 +325,6 @@
 		7A66D4F722A02B85006BDBC7 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				7A019C3B22AE9FF70034C5A3 /* SnapKit.xcodeproj */,
 				7A019C2222AE9FF40034C5A3 /* SwiftyJSON.xcodeproj */,
 				7A019C0922AE9FED0034C5A3 /* Alamofire.xcodeproj */,
 			);
@@ -404,7 +366,6 @@
 			children = (
 				7AA63B3622E36C8A00EAA214 /* SimpleCalculator.swift */,
 				7ABB1A7C22E5877B002E548F /* Calculator.swift */,
-				7A89655A22EF36D7002A2479 /* CloudCalculator.swift */,
 			);
 			path = FirstTabSubpage;
 			sourceTree = "<group>";
@@ -424,7 +385,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				7A019C4722AEA0100034C5A3 /* PBXTargetDependency */,
 				7A019C4B22AEA0100034C5A3 /* PBXTargetDependency */,
 				7A019C4F22AEA0100034C5A3 /* PBXTargetDependency */,
 			);
@@ -507,10 +467,6 @@
 				{
 					ProductGroup = 7A019C0A22AE9FED0034C5A3 /* Products */;
 					ProjectRef = 7A019C0922AE9FED0034C5A3 /* Alamofire.xcodeproj */;
-				},
-				{
-					ProductGroup = 7A019C3C22AE9FF70034C5A3 /* Products */;
-					ProjectRef = 7A019C3B22AE9FF70034C5A3 /* SnapKit.xcodeproj */;
 				},
 				{
 					ProductGroup = 7A019C2322AE9FF40034C5A3 /* Products */;
@@ -625,20 +581,6 @@
 			remoteRef = 7A019C3922AE9FF40034C5A3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7A019C4122AE9FF80034C5A3 /* SnapKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SnapKit.framework;
-			remoteRef = 7A019C4022AE9FF80034C5A3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7A019C4322AE9FF80034C5A3 /* SnapKit Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SnapKit Tests.xctest";
-			remoteRef = 7A019C4222AE9FF80034C5A3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -674,7 +616,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A66D58D22A4297E006BDBC7 /* UIkitExtension.swift in Sources */,
-				7A89655B22EF36D7002A2479 /* CloudCalculator.swift in Sources */,
 				7A66D58322A406BC006BDBC7 /* GlobalVariables.swift in Sources */,
 				7AA63B1B22E36AD100EAA214 /* FirstTab.swift in Sources */,
 				7A8C437722E9E2FB0037354C /* GeneralSubpage.swift in Sources */,
@@ -711,11 +652,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7A019C4722AEA0100034C5A3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SnapKit;
-			targetProxy = 7A019C4622AEA0100034C5A3 /* PBXContainerItemProxy */;
-		};
 		7A019C4B22AEA0100034C5A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "SwiftyJSON iOS";

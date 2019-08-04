@@ -21,10 +21,8 @@ func getImageWithColor(color: String) -> UIImage {
 }
 
 
-
-
 // 按比例布局的因子
-func f(_ number: CGFloat) -> CGFloat {
+func s(_ number: CGFloat) -> CGFloat {
     return number / 375 * kScreenWidth
 }
 
