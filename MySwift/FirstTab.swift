@@ -15,7 +15,7 @@ class FirstTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+//        view.backgroundColor = UIColor.white
         
         let scrollView = UIScrollView()
         view.addSubview(scrollView)

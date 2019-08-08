@@ -31,7 +31,7 @@ class Calculator: UIViewController {
     
     let ac = UIButton()
     let switchSign = UIButton()
-    let numberScreen = UILabel()
+    let numberScreen = InteractiveUILabel()
     
     
     var numberA = "0"
@@ -51,11 +51,11 @@ class Calculator: UIViewController {
         numberScreen.setFontStyle(color: color222, size: 90, weight: .thin)
         numberScreen.textAlignment = .right
         numberScreen.set(superview: view, text: "0")
-        numberScreen.makeConstraints(right: 25, bottom: 449 + kSafeAreaInsets.bottom, width: kScreenWidth - 50, height: 126)
+        numberScreen.makeConstraints(right: 25, bottom: 467 + kSafeAreaInsets.bottom, width: kScreenWidth - 40, height: numberScreen.getDefaultLineheight())
         numberScreen.adjustsFontSizeToFitWidth = true
         numberScreen.minimumScaleFactor = 0.2
         
-        
+
         number1.set(superview: view)
         number1.makeConstraints(left: 16, bottom: 105 + kSafeAreaInsets.bottom, width: 75, height: 75)
         number1.setNumberStyle(text: "1", self, selector: #selector(inputNumber(_:)))
@@ -170,7 +170,9 @@ class Calculator: UIViewController {
             if (numberA.contains(".") && numberA.count <= 9) || (!numberA.contains(".") && numberA.count <= 8) {
                 numberA += number.title(for: .normal)!
                 numberScreen.text! = formatNumber(value: numberA)
+                
             }
+            
         } else {
             numberBInputted = true
             self.deselectAllOperateSign()
@@ -284,6 +286,37 @@ class Calculator: UIViewController {
         
     }
     
+    // 显屏长按复制粘贴
+    @objc func longPressLabel() {
+        becomeFirstResponder()
+        print("heyhey")
+        
+        let menu = UIMenuController.shared //创建菜单控件器单例
+        let copy = UIMenuItem(title: "复制", action: #selector(copyText))
+        let paste = UIMenuItem(title: "粘贴", action: #selector(pasteText))
+        
+        if UIPasteboard.general.hasStrings {
+            print("double")
+            menu.menuItems = [copy, paste]
+        } else {
+            menu.menuItems = [copy]
+        }
+        
+        menu.setTargetRect(numberScreen.bounds, in: self.numberScreen)
+        menu.setMenuVisible(true, animated: true)
+    }
+    
+    @objc func copyText() {
+        UIPasteboard.general.string = numberScreen.text
+    }
+    
+    @objc func pasteText() {
+        numberScreen.text = UIPasteboard.general.string
+    }
+    
+    
+    
+    
     
     func deselectAllOperateSign() {
         plusSign.isSelected = false
@@ -318,7 +351,6 @@ class Calculator: UIViewController {
         let valueOfDouble = (value as NSString).doubleValue // 把String转换为Double
         
         
-        
         if (valueOfDouble >= -pow(10, -100) && valueOfDouble <= pow(10, -100)) || (valueOfDouble <= -pow(10, 100) || valueOfDouble >= pow(10, 100)) {
             numberFormatter.numberStyle = .scientific
             numberFormatter.maximumSignificantDigits = 5
@@ -338,21 +370,7 @@ class Calculator: UIViewController {
         
         return formatValue
     }
-    
-    @objc func longPressAction() {
-        let number = numberScreen.text
-        print(number)
-    }
-    
-    class Numbers: UIButton {
-        
-    }
-    
-    class OperateSigns: UIButton {
-        
-    }
-    
-    
+
 }
 
 
@@ -392,3 +410,59 @@ extension UIButton {
     
 }
 
+
+class Numbers: UIButton {
+}
+
+
+class OperateSigns: UIButton {
+}
+
+
+class InteractiveUILabel: UILabel {
+    override var canBecomeFirstResponder: Bool { return true }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    // storyboard或xib创建控件的时候有效
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+
+    func setup() {
+        isUserInteractionEnabled = true
+        self.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPressLabel)))
+    }
+
+    @objc func longPressLabel() {
+        becomeFirstResponder()
+        
+        
+
+        let menu = UIMenuController.shared
+        let copy = UIMenuItem(title: "复制", action: #selector(copyText))
+        let paste = UIMenuItem(title: "粘贴", action: #selector(pasteText))
+
+        if UIPasteboard.general.hasStrings {
+            //想做的和iOS计算器一样，用正则即可
+            menu.menuItems = [copy, paste]
+        } else {
+            menu.menuItems = [copy]
+        }
+
+        menu.setTargetRect(bounds, in: self)
+        menu.setMenuVisible(true, animated: true)
+    }
+
+    @objc func copyText() {
+        UIPasteboard.general.string = self.text
+    }
+
+    @objc func pasteText() {
+        self.text = UIPasteboard.general.string
+    }
+
+}

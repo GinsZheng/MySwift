@@ -19,9 +19,11 @@ class TestTab: UIViewController {
         myView.set(superview: view)
         myView.makeConstraints(left: 0, bottom: kSafeAreaInsets.bottom, width: kScreenWidth, height: 300)
         myView.backgroundColor = UIColor.hex("2c9eff")
-        print(kSafeAreaInsets.bottom)
         
-        
+//        let str = "123456heheda"
+        let str = "123456.90d"
+        let int =  Double(str) ?? 0
+        print(int)
     }
 
 }

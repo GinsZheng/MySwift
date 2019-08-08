@@ -36,9 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         forthTab.tabBarItem.image = UIImage(named: "tab-mine")
         
         // 设置tatabBar各标题
-        firstTab.tabBarItem.title = "View"
-        secondTab.tabBarItem.title = "Controller"
-        modelTab.tabBarItem.title = "Model"
+        firstTab.tabBarItem.title = "Firss"
+        secondTab.tabBarItem.title = "Second"
+        modelTab.tabBarItem.title = "Third"
         forthTab.tabBarItem.title = "Test"
         
         // 把tabBar实例添加到UITabBarController，并设置样式
