@@ -164,6 +164,17 @@ extension UILabel {
         return CGFloat(Int(height))
     }
     
+    func getLabelWidth(withMaxWidth maxWidth: CGFloat) -> CGFloat {
+        let labelText = self.text! as NSString
+        let size = CGSize(width: CGFloat(MAXFLOAT), height: self.frame.size.height)
+        let textSize = labelText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: self.font!], context: nil).size
+        var labelWidth = CGFloat(Int(textSize.width) + 1)
+        if labelWidth > maxWidth {
+            labelWidth = maxWidth
+        }
+        return labelWidth
+    }
+    
     func getDefaultLineheight() -> CGFloat {
         return self.font.pointSize * 1.4
     }

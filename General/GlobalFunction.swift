@@ -26,3 +26,6 @@ func s(_ number: CGFloat) -> CGFloat {
     return number / 375 * kScreenWidth
 }
 
+func u(_ number: CGFloat) -> CGFloat {
+    return number / kScreenWidth * 375
+}

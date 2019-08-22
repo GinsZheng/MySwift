@@ -160,7 +160,7 @@ extension UIView {
     func scalingConstraints(left: CGFloat, bottom: CGFloat, width: CGFloat, height:CGFloat) {
         self.frame.size = CGSize(width: s(width), height: s(height))
         self.frame.origin.x = s(left)
-        self.frame.origin.y = s(self.superview!.height) - s(self.height) - s(bottom)
+        self.frame.origin.y = self.superview!.height - self.height - s(bottom)
     }
 
     func scalingConstraints(centerX: CGFloat, top: CGFloat, width: CGFloat, height:CGFloat) {
@@ -171,32 +171,32 @@ extension UIView {
 
     func scalingConstraints(center: UIView, width: CGFloat, height:CGFloat) {
         self.frame.size = CGSize(width: s(width), height: s(height))
-        self.frame.origin.x = (s(center.width) - s(self.width)) / 2
-        self.frame.origin.y = (s(center.height) - s(self.height)) / 2
+        self.frame.origin.x = (center.width - self.width) / 2
+        self.frame.origin.y = (center.height - self.height) / 2
     }
 
     func scalingConstraints(centerX: CGFloat, bottom: CGFloat, width: CGFloat, height:CGFloat) {
         self.frame.size = CGSize(width: s(width), height: s(height))
         self.centerX = s(centerX)
-        self.frame.origin.y = s(self.superview!.height) - s(self.height) - s(bottom)
+        self.frame.origin.y = self.superview!.height - self.height - s(bottom)
     }
 
     func scalingConstraints(right: CGFloat, top: CGFloat, width: CGFloat, height:CGFloat) {
         self.frame.size = CGSize(width: s(width), height: s(height))
-        self.frame.origin.x = s(self.superview!.width) - s(self.width) - s(right)
+        self.frame.origin.x = self.superview!.width - self.width - s(right)
         self.frame.origin.y = s(top)
     }
 
     func scalingConstraints(right: CGFloat, centerY: CGFloat, width: CGFloat, height:CGFloat) {
         self.frame.size = CGSize(width: s(width), height: s(height))
-        self.frame.origin.x = s(self.superview!.width) - s(self.width) - s(right)
+        self.frame.origin.x = self.superview!.width - self.width - s(right)
         self.centerY = s(centerY)
     }
 
     func scalingConstraints(right: CGFloat, bottom: CGFloat, width: CGFloat, height:CGFloat) {
         self.frame.size = CGSize(width: s(width), height: s(height))
-        self.frame.origin.x = s(self.superview!.width) - s(self.width) - s(right)
-        self.frame.origin.y = s(self.superview!.height) - s(self.height) - s(bottom)
+        self.frame.origin.x = self.superview!.width - self.width - s(right)
+        self.frame.origin.y = self.superview!.height - self.height - s(bottom)
     }
 
 
@@ -204,21 +204,21 @@ extension UIView {
     func scalingConstraints(left: CGFloat, top: CGFloat, right: CGFloat, bottom: CGFloat) {
         self.frame.origin.x = s(left)
         self.frame.origin.y = s(top)
-        self.frame.size.width = s(self.superview!.width) - s(left) - s(right)
-        self.frame.size.height = s(self.superview!.height) - s(top) - s(bottom)
+        self.frame.size.width = self.superview!.width - s(left) - s(right)
+        self.frame.size.height = self.superview!.height - s(top) - s(bottom)
     }
 
     func scalingConstraints(allEdges: CGFloat) {
         self.frame.origin.x = s(allEdges)
         self.frame.origin.y = s(allEdges)
-        self.frame.size.width = s(self.superview!.width) - s(allEdges)*2
-        self.frame.size.height = s(self.superview!.height) - s(allEdges)*2
+        self.frame.size.width = self.superview!.width - s(allEdges)*2
+        self.frame.size.height = self.superview!.height - s(allEdges)*2
     }
 
     func scalingConstraints(left: CGFloat, top: CGFloat, right: CGFloat, height: CGFloat) {
         self.frame.origin.x = s(left)
         self.frame.origin.y = s(top)
-        self.frame.size.width = s(self.superview!.width) - s(left) - s(right)
+        self.frame.size.width = self.superview!.width - s(left) - s(right)
         self.frame.size.height = s(height)
     }
 

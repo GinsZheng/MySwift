@@ -11,6 +11,7 @@
 		7A019C4922AEA0100034C5A3 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A019C2E22AE9FF40034C5A3 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A019C4C22AEA0100034C5A3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A019C1522AE9FED0034C5A3 /* Alamofire.framework */; };
 		7A019C4D22AEA0100034C5A3 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A019C1522AE9FED0034C5A3 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A50EC9E230320E2003443E8 /* GlobalClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A50EC9D230320E2003443E8 /* GlobalClass.swift */; };
 		7A66D4CA22A028C8006BDBC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66D4C922A028C8006BDBC7 /* AppDelegate.swift */; };
 		7A66D4CF22A028C8006BDBC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A66D4CD22A028C8006BDBC7 /* Main.storyboard */; };
 		7A66D4D122A028C9006BDBC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A66D4D022A028C9006BDBC7 /* Assets.xcassets */; };
@@ -180,6 +181,7 @@
 /* Begin PBXFileReference section */
 		7A019C0922AE9FED0034C5A3 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../../SwiftKit/Library/Alamofire-alamofire5/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		7A019C2222AE9FF40034C5A3 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = "../../SwiftKit/Library/SwiftyJSON-master/SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
+		7A50EC9D230320E2003443E8 /* GlobalClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalClass.swift; sourceTree = "<group>"; };
 		7A66D4C622A028C8006BDBC7 /* MySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A66D4C922A028C8006BDBC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A66D4CE22A028C8006BDBC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -334,11 +336,12 @@
 		7A66D53322A02CA1006BDBC7 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				7A66D53422A02CD2006BDBC7 /* SetColorInHex.swift */,
 				7A66D58222A406BC006BDBC7 /* GlobalVariables.swift */,
 				7AB9252322A6AD9800C35AD5 /* GlobalFunction.swift */,
-				7A66D56A22A038A0006BDBC7 /* MakeConstraints.swift */,
+				7A50EC9D230320E2003443E8 /* GlobalClass.swift */,
 				7A66D58C22A4297E006BDBC7 /* UIkitExtension.swift */,
+				7A66D56A22A038A0006BDBC7 /* MakeConstraints.swift */,
+				7A66D53422A02CD2006BDBC7 /* SetColorInHex.swift */,
 				7AA63B3222E36B6000EAA214 /* Colors.swift */,
 			);
 			path = General;
@@ -618,6 +621,7 @@
 				7A66D58D22A4297E006BDBC7 /* UIkitExtension.swift in Sources */,
 				7A66D58322A406BC006BDBC7 /* GlobalVariables.swift in Sources */,
 				7AA63B1B22E36AD100EAA214 /* FirstTab.swift in Sources */,
+				7A50EC9E230320E2003443E8 /* GlobalClass.swift in Sources */,
 				7A8C437722E9E2FB0037354C /* GeneralSubpage.swift in Sources */,
 				7AB9252422A6AD9800C35AD5 /* GlobalFunction.swift in Sources */,
 				7A66D56B22A038A0006BDBC7 /* MakeConstraints.swift in Sources */,
