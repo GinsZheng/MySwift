@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Calculator: UIViewController {
+class Calculator: UIViewController, InteractiveUILabelDelegate {
     
     let number1 = Numbers()
     let number2 = Numbers()
@@ -56,12 +56,13 @@ class Calculator: UIViewController {
         numberScreen.scalingConstraints(right: 25, bottom: 467 + u(kSafeAreaInsets.bottom), width: numberScreen.getLabelWidth(withMaxWidth: kScreenWidth - 50), height: 90)
         numberScreen.adjustsFontSizeToFitWidth = true
         numberScreen.minimumScaleFactor = 0.2
+        numberScreen.delegate = self
         
         
         numberScreenBackground.set(superview: view)
         numberScreenBackground.setBackgroundColor(color: colorF5F6F8)
         numberScreenBackground.setCornerRadius(radius: s(14))
-        numberScreenBackground.isHidden = false
+        numberScreenBackground.isHidden = true
         numberScreenBackground.scalingConstraints(right: 16, bottom: 459 + u(kSafeAreaInsets.bottom), width: numberScreen.getLabelWidth(withMaxWidth: kScreenWidth - 50) + 16, height: 106)
         
         
@@ -168,7 +169,7 @@ class Calculator: UIViewController {
             if number.title(for: .normal) == "." && numberA.contains(".") {
                 return
             }
-            
+            // 反过来。使用numberScreen.text!作为判断，最后赋值给numberA|B，会不会更好一些？
             if number.title(for: .normal) == "." && (numberA == "0") {
                 numberA = "0"
             } else if number.title(for: .normal) == "." && (numberA == "-0") {
@@ -179,9 +180,12 @@ class Calculator: UIViewController {
                 numberA = "-"
             }
             
-            if (numberA.contains(".") && numberA.count <= 9) || (!numberA.contains(".") && numberA.count <= 8) {
+            let patternA = "\\.|\\-"
+            let cleardNumberA = Regex.replaceMatches(pattern: patternA, testedText: numberA, replaceWith: "")
+            if cleardNumberA.count <= 8 {
                 numberA += number.title(for: .normal)!
-                numberScreen.text! = formatNumber(value: numberA)
+                
+                numberScreen.text! = numberA
                 
                 updateNumberScreenSize()
                 
@@ -195,15 +199,26 @@ class Calculator: UIViewController {
                 return
             }
             
-            if number.title(for: .normal) == "." && (numberB == "0" || numberB == "-0") {
+//            if number.title(for: .normal) == "." && (numberB == "0" || numberB == "-0") {
+//                numberB = "0"
+//            } else if numberB == "0" || numberB == "-0" {
+//                numberB = ""
+//            }
+            if number.title(for: .normal) == "." && (numberB == "0") {
                 numberB = "0"
-            } else if numberB == "0" || numberB == "-0" {
+            } else if number.title(for: .normal) == "." && (numberB == "-0") {
+                numberB = "-0"
+            } else if numberB == "0" {
                 numberB = ""
+            } else if numberB == "-0" {
+                numberB = "-"
             }
             
-            if (numberB.contains(".") && numberB.count <= 9) || (!numberB.contains(".") && numberB.count <= 8) {
+            let patternB = "\\.|\\-"
+            let cleardNumberB = Regex.replaceMatches(pattern: patternB, testedText: numberB, replaceWith: "")
+            if cleardNumberB.count <= 8 {
                 numberB += number.title(for: .normal)!
-                numberScreen.text! = formatNumber(value: numberB)
+                numberScreen.text! = numberB
                 
                 updateNumberScreenSize()
             }
@@ -258,7 +273,7 @@ class Calculator: UIViewController {
         
         result = Operation.getResult(numberA: numberA, numberB: numberB, operateSign: currentOperateSign)
         
-        if formatNumber(value: result) == formatNumber(value: numberB) {
+        if formatResult(value: result) == formatResult(value: numberB) {
             UIView.animate(withDuration: 0.2, delay: 0, options: [.autoreverse], animations: {
                 self.numberScreen.alpha = 0
             }) { (_) in
@@ -266,7 +281,7 @@ class Calculator: UIViewController {
             }
         }
         
-        numberScreen.text! = formatNumber(value: result)
+        numberScreen.text! = formatResult(value: result)
         updateNumberScreenSize()
         
         numberA = "0"
@@ -302,17 +317,17 @@ class Calculator: UIViewController {
         
         if result != "" {
             result = Operation.getOppositeNumber(number: result)
-            numberScreen.text! = formatNumber(value: result)
+            numberScreen.text! = formatResult(value: result)
         } else if operaterSignInputted == false {
             numberA = Operation.getOppositeNumber(number: numberA)
-            numberScreen.text! = formatNumber(value: numberA)
+            numberScreen.text! = formatResult(value: numberA)
         } else if operaterSignInputted == true {
             numberB = Operation.getOppositeNumber(number: numberB)
-            numberScreen.text! = formatNumber(value: numberB)
+            numberScreen.text! = formatResult(value: numberB)
         }
         
         numberScreenBackground.isHidden = true
-        
+        updateNumberScreenSize()
     }
     
     
@@ -330,7 +345,12 @@ class Calculator: UIViewController {
         powerSign.isSelected = false
     }
     
-    func formatNumber(value: String) -> String {
+    func formatInputtedNumber(value: String) -> String {
+        let formatedNumber = ""
+        return formatedNumber
+    }
+    
+    func formatResult(value: String) -> String {
         if value == "inf" || value == "-inf" {
             return "Oops, bummer"
         }
@@ -339,8 +359,8 @@ class Calculator: UIViewController {
             return "0"
         }
         
-        if value == "0" || value == "-0" {
-            return value
+        if value == "0" || value == "0.0" {
+            return "0"
         }
         
         let pattern = "^-?0\\.0{0,8}$"
@@ -372,6 +392,29 @@ class Calculator: UIViewController {
         let formatValue = numberFormatter.string(from: NSNumber(value: valueOfDouble))!.lowercased()
         
         return formatValue
+    }
+    
+    func showNumberScreenBg() {
+        numberScreenBackground.isHidden = false
+    }
+    
+    func changeLabelBg() {
+        updateNumberScreenSize()
+    }
+    
+    func hideNumberScreenBg() {
+        numberScreenBackground.isHidden = true
+    }
+    
+    func changeNumber() {
+        if operaterSignInputted == true {
+            print("inputted")
+            numberB = numberScreen.text!
+        } else {
+            print("not inputted")
+            print(numberScreen.text!)
+            numberA = numberScreen.text!
+        }
     }
 
 }
@@ -423,6 +466,9 @@ class OperateSigns: UIButton {
 
 
 class InteractiveUILabel: UILabel {
+    
+    weak var delegate: InteractiveUILabelDelegate?
+    
     override var canBecomeFirstResponder: Bool { return true }
 
     override init(frame: CGRect) {
@@ -466,17 +512,29 @@ class InteractiveUILabel: UILabel {
         menu.setTargetRect(bounds, in: self)
         menu.setMenuVisible(true, animated: true)
         
+        if delegate != nil {
+            delegate!.showNumberScreenBg()
+        }
         
     }
     
     @objc func copyText() {
         UIPasteboard.general.string = self.text!
+        
+        if delegate != nil {
+            delegate!.hideNumberScreenBg()
+            delegate!.changeLabelBg()
+        }
     }
     
     @objc func pasteText() {
         self.text = UIPasteboard.general.string
-        self.scalingConstraints(right: 25, bottom: 467 + u(kSafeAreaInsets.bottom), width: self.getLabelWidth(withMaxWidth: kScreenWidth - 50), height: 90)
         
+        if delegate != nil {
+            delegate!.hideNumberScreenBg()
+            delegate!.changeLabelBg()
+            delegate!.changeNumber()
+        }
     }
     
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
@@ -486,6 +544,22 @@ class InteractiveUILabel: UILabel {
             return false
         }
     }
+    
+//    deinit {
+//        print("释放")
+//    }
 
 }
 
+
+
+protocol InteractiveUILabelDelegate: NSObjectProtocol {
+    
+    func changeLabelBg()
+    
+    func showNumberScreenBg()
+    
+    func hideNumberScreenBg()
+    
+    func changeNumber()
+}

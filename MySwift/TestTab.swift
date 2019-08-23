@@ -14,16 +14,16 @@ class TestTab: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
-        let myView = UIView()
-        myView.set(superview: view)
-        myView.makeConstraints(left: 0, bottom: kSafeAreaInsets.bottom, width: kScreenWidth, height: 300)
-        myView.backgroundColor = UIColor.hex("2c9eff")
         
-//        let str = "123456heheda"
-        let str = "123456.90d"
-        let int =  Double(str) ?? 0
-        print(int)
+        
+        let lable = UILabel()
+        lable.set(superview: view, text: "hahahahahaah")
+        lable.setFontStyle(color: color2C9EFF, size: 17)
+        lable.makeConstraints(left: 20, top: 100)
+        
+        let pattern = "h"
+        let replacedMatches = Regex.replaceMatches(pattern: pattern, testedText: lable.text!, replaceWith: "")
+        print(replacedMatches)
     }
 
 }
