@@ -34,6 +34,9 @@ class Calculator: UIViewController, InteractiveUILabelDelegate {
     let numberScreen = InteractiveUILabel()
     let numberScreenBackground = UIView()
     
+    let eggView = UIView()
+    let eggImage = UIImageView()
+    
     
     var numberA = "0"
     var numberB = "0"
@@ -162,6 +165,11 @@ class Calculator: UIViewController, InteractiveUILabelDelegate {
         switchSign.set(superview: view)
         switchSign.scalingConstraints(left: 105, bottom: 372 + u(kSafeAreaInsets.bottom), width: 75, height: 75)
         
+        
+        eggView.set(superview: view)
+        eggView.makeConstraints(left: 0, top: 0, right: 0, bottom: 0)
+        eggView.isUserInteractionEnabled = false
+        
     }
     
     
@@ -281,15 +289,15 @@ class Calculator: UIViewController, InteractiveUILabelDelegate {
         }
         
         numberScreen.text! = formatResult(value: result)
-        updateNumberScreenSize()
-        
         numberA = "0"
         storedNumberB = numberB
         numberB = "0"
         operaterSignInputted = false
         numberBInputted = false
         
+        self.updateNumberScreenSize()
         self.deselectAllOperateSign()
+        Egg.addAEgg(superview: self.eggView, result: Double(result)!)
         
         numberScreenBackground.isHidden = true
         
@@ -304,9 +312,10 @@ class Calculator: UIViewController, InteractiveUILabelDelegate {
         
         operaterSignInputted = false
         numberBInputted = false
-        self.deselectAllOperateSign()
         
+        self.deselectAllOperateSign()
         updateNumberScreenSize()
+        Egg.removeEggs(superview: eggView)
         
         numberScreenBackground.isHidden = true
         
@@ -327,6 +336,12 @@ class Calculator: UIViewController, InteractiveUILabelDelegate {
         
         numberScreenBackground.isHidden = true
         updateNumberScreenSize()
+    }
+    
+    
+    @objc func cancelLongPress() {
+        numberScreenBackground.isHidden = true
+        numberScreen.resignFirstResponder()
     }
     
     
@@ -435,12 +450,9 @@ class Calculator: UIViewController, InteractiveUILabelDelegate {
         }
     }
     
-    @objc func cancelLongPress() {
-        numberScreenBackground.isHidden = true
-        numberScreen.resignFirstResponder()
-    }
 
 }
+
 
 
 extension UIButton {
@@ -574,8 +586,6 @@ class InteractiveUILabel: UILabel {
 
 }
 
-
-
 protocol InteractiveUILabelDelegate: NSObjectProtocol {
     
     func changeLabelBg()
@@ -586,3 +596,50 @@ protocol InteractiveUILabelDelegate: NSObjectProtocol {
     
     func changeNumber()
 }
+
+
+
+class Egg {
+    static func addAEgg(superview: UIView, result: Double) {
+        
+        let x = CGFloat(arc4random() % UInt32(kScreenWidth))
+        let y = CGFloat(arc4random() % UInt32(kScreenHeight))
+        let colors = ["FA6159", "FFC300", "29CF42", "1DB0FF", "FF7BAE", "FFAF00", "FF3B30", "2C9EFF", "666666", "999999", "007AFF"]
+        let randomColor = colors[Int(arc4random() % UInt32(colors.count))]
+        let size = self.getSize(result: result)
+        
+        let egg = UIImageView()
+        egg.set(superview: superview)
+        egg.image = getImage(result: result).changeColor(color: .hex(randomColor))
+        egg.makeConstraints(left: x - size/2, top: y - size/2, width: size, height: size)
+        egg.tintColor = .hex("2c9eff")
+        
+    }
+    
+    private static func getSize(result: Double) -> CGFloat {
+        if abs(result) <= pow(10, -1.75) {
+            return 1
+        } else if abs(result) >= pow(10, 78) {
+            return 320
+        } else {
+            let n = (log10(abs(result)))
+            return CGFloat(8*(n+2)/2)
+        }
+    }
+    
+    private static func getImage(result: Double) -> UIImage {
+        if result >= 0 {
+            return UIImage(named: "egg")!
+        } else {
+            return UIImage(named: "negEgg")!
+        }
+    }
+    
+    static func removeEggs(superview: UIView) {
+        for i in superview.subviews {
+            i.removeFromSuperview()
+        }
+    }
+}
+
+
