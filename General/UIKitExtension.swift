@@ -273,6 +273,5 @@ extension String {
         return String(self[self.index(self.startIndex, offsetBy: length-1)])
     }
     
-
 }
 

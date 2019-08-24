@@ -24,6 +24,10 @@ class TestTab: UIViewController {
         let pattern = "h"
         let replacedMatches = Regex.replaceMatches(pattern: pattern, testedText: lable.text!, replaceWith: "")
         print(replacedMatches)
+        
+        var str = "12345666"
+        str.insert(contentsOf: "****", at: str.startIndex)
+        print(str)
     }
 
 }

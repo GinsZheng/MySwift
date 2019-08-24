@@ -50,6 +50,11 @@ class Calculator: UIViewController, InteractiveUILabelDelegate {
         view.backgroundColor = UIColor.white
         self.hideNavBar()
         
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelLongPress)))
+        numberScreenBackground.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelLongPress)))
+        numberScreen.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelLongPress)))
+        
+        
         numberScreen.setFontStyle(color: color222, size: s(90), weight: .thin)
         numberScreen.textAlignment = .right
         numberScreen.set(superview: view, text: "0")
@@ -169,7 +174,7 @@ class Calculator: UIViewController, InteractiveUILabelDelegate {
             if number.title(for: .normal) == "." && numberA.contains(".") {
                 return
             }
-            // 反过来。使用numberScreen.text!作为判断，最后赋值给numberA|B，会不会更好一些？
+
             if number.title(for: .normal) == "." && (numberA == "0") {
                 numberA = "0"
             } else if number.title(for: .normal) == "." && (numberA == "-0") {
@@ -184,8 +189,7 @@ class Calculator: UIViewController, InteractiveUILabelDelegate {
             let cleardNumberA = Regex.replaceMatches(pattern: patternA, testedText: numberA, replaceWith: "")
             if cleardNumberA.count <= 8 {
                 numberA += number.title(for: .normal)!
-                
-                numberScreen.text! = numberA
+                numberScreen.text! = formatInputtedNumber(value: numberA)
                 
                 updateNumberScreenSize()
                 
@@ -199,11 +203,6 @@ class Calculator: UIViewController, InteractiveUILabelDelegate {
                 return
             }
             
-//            if number.title(for: .normal) == "." && (numberB == "0" || numberB == "-0") {
-//                numberB = "0"
-//            } else if numberB == "0" || numberB == "-0" {
-//                numberB = ""
-//            }
             if number.title(for: .normal) == "." && (numberB == "0") {
                 numberB = "0"
             } else if number.title(for: .normal) == "." && (numberB == "-0") {
@@ -218,7 +217,7 @@ class Calculator: UIViewController, InteractiveUILabelDelegate {
             let cleardNumberB = Regex.replaceMatches(pattern: patternB, testedText: numberB, replaceWith: "")
             if cleardNumberB.count <= 8 {
                 numberB += number.title(for: .normal)!
-                numberScreen.text! = numberB
+                numberScreen.text! = formatInputtedNumber(value: numberB)
                 
                 updateNumberScreenSize()
             }
@@ -320,10 +319,10 @@ class Calculator: UIViewController, InteractiveUILabelDelegate {
             numberScreen.text! = formatResult(value: result)
         } else if operaterSignInputted == false {
             numberA = Operation.getOppositeNumber(number: numberA)
-            numberScreen.text! = formatResult(value: numberA)
+            numberScreen.text! = formatInputtedNumber(value: numberA)
         } else if operaterSignInputted == true {
             numberB = Operation.getOppositeNumber(number: numberB)
-            numberScreen.text! = formatResult(value: numberB)
+            numberScreen.text! = formatInputtedNumber(value: numberB)
         }
         
         numberScreenBackground.isHidden = true
@@ -346,7 +345,26 @@ class Calculator: UIViewController, InteractiveUILabelDelegate {
     }
     
     func formatInputtedNumber(value: String) -> String {
-        let formatedNumber = ""
+        var formatedNumber = value
+        
+        let valueAsNum = (value as NSString).intValue
+
+        if abs(valueAsNum) >= 1000 && abs(valueAsNum) < 1000000 {
+            if value.contains(".") {
+                formatedNumber.insert(contentsOf: ",", at: value.index(value.firstIndex(of: ".")!, offsetBy: -3))
+            } else {
+                formatedNumber.insert(contentsOf: ",", at: value.index(value.endIndex, offsetBy: -3))
+            }
+        } else if abs(valueAsNum) >= 1000000 {
+            if value.contains(".") {
+                formatedNumber.insert(contentsOf: ",", at: value.index(value.firstIndex(of: ".")!, offsetBy: -3))
+                formatedNumber.insert(contentsOf: ",", at: value.index(value.firstIndex(of: ".")!, offsetBy: -6))
+            } else {
+                formatedNumber.insert(contentsOf: ",", at: value.index(value.endIndex, offsetBy: -3))
+                formatedNumber.insert(contentsOf: ",", at: value.index(value.endIndex, offsetBy: -6))
+            }
+        }
+        
         return formatedNumber
     }
     
@@ -372,15 +390,15 @@ class Calculator: UIViewController, InteractiveUILabelDelegate {
         }
         
         let numberFormatter = NumberFormatter()
-        let valueOfDouble = (value as NSString).doubleValue
+        let valueAsNum = (value as NSString).doubleValue
         
-        if (valueOfDouble >= -pow(10, -100) && valueOfDouble <= pow(10, -100)) || (valueOfDouble <= -pow(10, 100) || valueOfDouble >= pow(10, 100)) {
+        if (valueAsNum >= -pow(10, -100) && valueAsNum <= pow(10, -100)) || (valueAsNum <= -pow(10, 100) || valueAsNum >= pow(10, 100)) {
             numberFormatter.numberStyle = .scientific
             numberFormatter.maximumSignificantDigits = 5
-        } else if (valueOfDouble >= -pow(10, -10) && valueOfDouble <= pow(10, -10)) || (valueOfDouble <= -pow(10, 10) || valueOfDouble > pow(10, 10)) {
+        } else if (valueAsNum >= -pow(10, -10) && valueAsNum <= pow(10, -10)) || (valueAsNum <= -pow(10, 10) || valueAsNum > pow(10, 10)) {
             numberFormatter.numberStyle = .scientific
             numberFormatter.maximumSignificantDigits = 6
-        } else if (valueOfDouble > -pow(10, -8) && valueOfDouble < pow(10, -8)) || (valueOfDouble < -pow(10, 9) || valueOfDouble > pow(10, 9)) {
+        } else if (valueAsNum > -pow(10, -8) && valueAsNum < pow(10, -8)) || (valueAsNum < -pow(10, 9) || valueAsNum > pow(10, 9)) {
             numberFormatter.numberStyle = .scientific
             numberFormatter.maximumSignificantDigits = 7
         } else {
@@ -389,7 +407,7 @@ class Calculator: UIViewController, InteractiveUILabelDelegate {
         }
 
         
-        let formatValue = numberFormatter.string(from: NSNumber(value: valueOfDouble))!.lowercased()
+        let formatValue = numberFormatter.string(from: NSNumber(value: valueAsNum))!.lowercased()
         
         return formatValue
     }
@@ -415,6 +433,11 @@ class Calculator: UIViewController, InteractiveUILabelDelegate {
             print(numberScreen.text!)
             numberA = numberScreen.text!
         }
+    }
+    
+    @objc func cancelLongPress() {
+        numberScreenBackground.isHidden = true
+        numberScreen.resignFirstResponder()
     }
 
 }
@@ -484,13 +507,17 @@ class InteractiveUILabel: UILabel {
 
     func setTarget() {
         isUserInteractionEnabled = true
-        self.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPressLabel)))
-        
+        self.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPressLabel(_:))))
+
     }
     
-    @objc func longPressLabel() {
+    @objc func longPressLabel(_ sender: UILongPressGestureRecognizer) {
+
+        if sender.state != UIGestureRecognizer.State.began {
+            return
+        }
+        
         becomeFirstResponder()
-        print("heyhey")
         
         let menu = UIMenuController.shared //创建菜单控件器单例
         let copy = UIMenuItem(title: "复制", action: #selector(copyText))
@@ -544,10 +571,6 @@ class InteractiveUILabel: UILabel {
             return false
         }
     }
-    
-//    deinit {
-//        print("释放")
-//    }
 
 }
 
