@@ -1,2 +1,2 @@
-# mySwift
-To learn swift
+# SwiftNotes
+Notes to record Swift code
