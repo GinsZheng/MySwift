@@ -53,12 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = UIColor.white
         
         // 设置启动时显示的tab
-        tabBar.selectedIndex = 3
-        
-        
-        // GrowingIO初始化
-//        Growing.start(withAccountId: "4f789f2780f6eba3", withSampling: 100)
-//        Growing.setEnableLog(true)
+        tabBar.selectedIndex = 0
 
         
         return true
