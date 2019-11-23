@@ -23,7 +23,7 @@ class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         table.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(controlList.count))
         table.dataSource = self
         table.delegate = self
-        table.separatorColor = UIColor.hex(colorNoColor)
+        table.separatorColor = UIColor.hex(cNoColor)
         
     }
     

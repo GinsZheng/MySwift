@@ -15,7 +15,7 @@ class WebViewPage: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        view.setBackgroundColor(color: colorFFF)
+        view.setBackgroundColor(color: cFFF)
         
         self.progressView.makeConstraints(left: 0, top: kNavBarHeight, width: kScreenWidth, height: 2)
         self.progressView.isHidden = false
@@ -42,7 +42,7 @@ class WebViewPage: UIViewController {
     // 进度条
     lazy var progressView: UIProgressView = {
         let progress = UIProgressView()
-        progress.progressTintColor = UIColor.hex(color2C9EFF)
+        progress.progressTintColor = UIColor.hex(c2C9EFF)
         progress.trackTintColor = .clear
         return progress
     }()

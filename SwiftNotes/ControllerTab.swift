@@ -24,7 +24,7 @@ class ControllerTab: UIViewController, UITableViewDelegate, UITableViewDataSourc
         table.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(controllerList.count))
         table.dataSource = self
         table.delegate = self
-        table.separatorColor = UIColor.hex(colorNoColor)
+        table.separatorColor = UIColor.hex(cNoColor)
         
     }
     

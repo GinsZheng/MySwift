@@ -22,7 +22,7 @@ class TextViewPage: UIViewController {
         textView.textContainerInset = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 6)
         
         textView.clearsOnInsertion = true
-        textView.backgroundColor = UIColor.hex(colorF5F6F8)
+        textView.backgroundColor = UIColor.hex(cF5F6F8)
 
         
     }
